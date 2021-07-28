@@ -1,3 +1,8 @@
 ## List of random projects I needed a place to host online
 
-* [Central Tendency Homework](/density.html)
+### PP Analysis
+* [Elo Justification](/elojust.html)
+
+### Course Work
+* [Distribution Assignment](/density.html)
+* [Central Tendency](/w9ct.html)
