@@ -2,6 +2,7 @@
 
 ### PP Analysis
 * [Elo Justification](/elojust.html)
+* [PrePost Summary](/ExpandedPrePost_summary.html)
 
 ### Course Work
 * [Distribution Assignment](/density.html)
