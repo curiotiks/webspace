@@ -7,3 +7,4 @@
 ### Course Work
 * [Distribution Assignment](/density.html)
 * [Central Tendency](/w9ct.html)
+* [Self-efficacy Presentation](/SelfEfficacyPresentation.html)
