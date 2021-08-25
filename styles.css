@@ -1,0 +1,20 @@
+
+.reveal .ref {
+  margin-left: 44px;
+  text-align: left;
+  padding-left: 22px;
+  text-indent: -44px;
+}
+
+.reveal li {
+  padding-bottom:24px;
+}
+
+.reveal .second {
+  font-size: 85%;
+}
+
+.reveal blockquote {
+  text-align: left;
+  line-height: 2em;
+}
