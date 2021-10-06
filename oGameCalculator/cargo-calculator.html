@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <h1>Cargo Ship Calculator</h1>
+    <link rel='stylesheet' href='styles.css'>
+    <script type="text/javascript" src='js/main.js'></script>
+</head>
+
+
+<body>
+    <!-- Form Field -->
+    <div>
+        <form action="" id="cargoForm" onsubmit="return false;">
+            <fieldset>
+                <label for="metalCap">Metal Capacity:</label><br>
+                <input type="number" id="metalCap" name="metalCap" min=0 max=5000000 value="metalCap"><br>
+
+                <label for="crysCap">Crystal Capacity:</label><br>
+                <input type="number" id="crysCap" name="crysCap" min=0 max=5000000 value="crysCap"><br>
+
+                <label for="deuCap">Deuterium Capacity:</label><br>
+                <input type="number" id="deuCap" name="deuCap" min=0 max=5000000 value="deuCap"><br>
+                <br>
+
+                <!-- Drop Down menu -->
+                <label for='shipType'>How many ships?</label><br>
+                <select id='shipType' name='shipType' onchange="getQuantTotals()">
+                    <option value="">--Choose a ship type--</option>
+                    <option value="Large Cargo">Large Cargo</option>
+                    <option value="Small Cargo">Small Cargo</option>
+                </select>
+                <br>
+
+                <div id='totalShips'></div>
+
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

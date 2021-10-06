@@ -1,41 +1,44 @@
-<html>
-
 <head>
-    <h1>Cargo Ship Calculator</h1>
-    <link rel='stylesheet' href='styles.css'>
-    <script type="text/javascript" src='js/main.js'></script>
+
+    <head>
+    </head>
+
+    <body>
+        <style>
+            body {
+                height: 100%;
+                width: 100%;
+                background: url(/oGameCalculator/images/star-bg.jpg) right bottom no-repeat;
+                background-size: 1600px 900px;
+                /* background-image: radial-gradient( #2C3E50 50%, #ECF0F1); */
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                display: flex;
+            }
+            
+            .middleBar {
+                height: 30%;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                display: flex;
+                flex-direction: column;
+                background-color: #2C3E50;
+                color: whitesmoke;
+            }
+            
+            .middleBar.a {
+                color: whitesmoke;
+            }
+        </style>
+        <div class='middleBar'>
+            <h1>oGame Projects</h1>
+            <p>I'm developing my html/css skills by creating small apps for oGame. </p>
+
+            <a href="cargo-calculator.html">Cargo Calculator</a>
+            <a href="rapidfire-grid.html">Rapidfire Grid</a>
+        </div>
+    </body>
 </head>
-
-
-<body>
-    <!-- Form Field -->
-    <div>
-        <form action="" id="cargoForm" onsubmit="return false;">
-            <fieldset>
-                <label for="metalCap">Metal Capacity:</label><br>
-                <input type="number" id="metalCap" name="metalCap" min=0 max=5000000 value="metalCap"><br>
-
-                <label for="crysCap">Crystal Capacity:</label><br>
-                <input type="number" id="crysCap" name="crysCap" min=0 max=5000000 value="crysCap"><br>
-
-                <label for="deuCap">Deuterium Capacity:</label><br>
-                <input type="number" id="deuCap" name="deuCap" min=0 max=5000000 value="deuCap"><br>
-                <br>
-
-                <!-- Drop Down menu -->
-                <label for='shipType'>How many ships?</label><br>
-                <select id='shipType' name='shipType' onchange="getQuantTotals()">
-                    <option value="">--Choose a ship type--</option>
-                    <option value="Large Cargo">Large Cargo</option>
-                    <option value="Small Cargo">Small Cargo</option>
-                </select>
-                <br>
-
-                <div id='totalShips'></div>
-
-            </fieldset>
-        </form>
-    </div>
-</body>
-
-</html>
