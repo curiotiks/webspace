@@ -10,31 +10,41 @@
         .tg {
             border-collapse: collapse;
             border-spacing: 0;
+            font-size: 11px;
         }
         
         .tg td {
             border-color: black;
             border-style: solid;
             border-width: 1px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            padding: 10px 5px;
+            padding: 10px 20px;
         }
         
-        .tg .xlabel {
-            font-size: 9px;
+        .tg tr {
+            white-space: nowrap;
+        }
+        
+        .redLabel {
             background-color: red;
         }
         
-        .tg .objectLabels {
-            font-size: 9px;
-            text-align: center;
-            vertical-align: center;
+        .greenLabel {
+            background-color: green;
+            transform: rotate(180deg);
         }
         
-        .tg .objectLabels span {
-            writing-mode: vertical-lr;
-            white-space: nowrap;
+        div.vertical {
+            margin-left: -40px;
+            position: absolute;
+            width: 80px;
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+        }
+        
+        tr.vertical {
+            height: 90px;
+            line-height: -20px;
+            text-align: left;
         }
     </style>
 
@@ -42,32 +52,88 @@
         <tbody>
             <tr>
                 <th colspan="2"></th>
-                <th colspan="25" class="xLabel">Received Rapidfire</th>
+                <th colspan="25" class='redLabel'>
+                    <div>Received Rapidfire</div>
+                </th>
+            </tr>
+            <tr class='vertical'>
+                <td colspan="2" style="border-style: none"></td>
+                <td>
+                    <div class='vertical'>Light Fighter</div>
+                </td>
+                <td>
+                    <div class='vertical'>Heavy Fighter</div>
+                </td>
+                <td>
+                    <div class='vertical'>Cruiser</div>
+                </td>
+                <td>
+                    <div class='vertical'>Battleship</div>
+                </td>
+                <td>
+                    <div class='vertical'>Battlecruiser</div>
+                </td>
+                <td>
+                    <div class='vertical'>Bomber</div>
+                </td>
+                <td>
+                    <div class='vertical'>Destroyer</div>
+                </td>
+                <td>
+                    <div class='vertical'>Deathstar</div>
+                </td>
+                <td>
+                    <div class='vertical'>Reaper</div>
+                </td>
+                <td>
+                    <div class='vertical'>Pathfinder</div>
+                </td>
+                <td>
+                    <div class='vertical'>Small Cargo</div>
+                </td>
+                <td>
+                    <div class='vertical'>Large Cargo</div>
+                </td>
+                <td>
+                    <div class='vertical'>Colony Ship</div>
+                </td>
+                <td>
+                    <div class='vertical'>Recycler</div>
+                </td>
+                <td>
+                    <div class='vertical'>Espionage Probe</div>
+                </td>
+                <td>
+                    <div class='vertical'>Solar Satellite</div>
+                </td>
+                <td>
+                    <div class='vertical'>Crawler</div>
+                </td>
+                <td>
+                    <div class='vertical'>Rocket Launcher</div>
+                </td>
+                <td>
+                    <div class='vertical'>Light Laser</div>
+                </td>
+                <td>
+                    <div class='vertical'>Heavy Laser</div>
+                </td>
+                <td>
+                    <div class='vertical'>Ion Cannon</div>
+                </td>
+                <td>
+                    <div class='vertical'>Gauss Cannon</div>
+                </td>
+                <td>
+                    <div class='vertical'>Plasma Turrent</div>
+                </td>
             </tr>
             <tr>
-                <td colspan="2"></td>
-                <td class="objectLabels"><span>Light Fighter</span></td>
-                <td class="objectLabels"><span>Heavy Fighter</span></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-                <td class="tg-0lax"></td>
-            </tr>
-            <tr>
-                <td rowspan="26 class=" tg-0lax "></td>
+                <td class="greenLabel" rowspan="26">
+                    <div class='vertical'>Rapidfire Against...</div>
+                </td>
+                <td>Light Fighter</td>
+                <td class="tg-0lax ">-</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -81,73 +147,9 @@
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
+                <td class="tg-0lax ">5</td>
+                <td class="tg-0lax ">5</td>
+                <td class="tg-0lax ">5</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -156,6 +158,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Heavy Fighter</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -178,28 +184,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Cruiser</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -222,28 +210,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Battleship</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -266,28 +236,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Battlecruiser</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -310,28 +262,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Bomber</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -354,28 +288,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Destroyer</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -398,28 +314,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Deathstar</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -442,28 +340,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Reaper</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -486,28 +366,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Pathfinder</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -530,28 +392,10 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Small Cargo</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-                <td class="tg-0lax "></td>
-            </tr>
-            <tr>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -574,6 +418,297 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
+                <td>Large Cargo</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Colony Ship</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Recycler</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Espionage Probe</Prog>
+                </td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Solar Satellite</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Crawler</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Rocket Launcher</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Light Laser</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Heavy Laser</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td>Ion Cannon</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax ">Gauss Cannon</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+            </tr>
+            <tr>
+                <td class="tg-0lax ">Plasma Turrent</td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
+                <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
