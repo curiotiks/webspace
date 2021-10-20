@@ -101,7 +101,8 @@ Do you think you would accomplish this training session?
 
 &lt;script&gt;
 console.log(uid)
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="2" name="setup" tags="startup" position="63,105" size="100,100">(set: $choice_1 to &quot;&quot;)
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="2" name="setup" tags="startup" position="63,105" size="100,100">(set: $uid to &quot;&quot;)
+(set: $choice_1 to &quot;&quot;)
 (set: $choice_2 to &quot;&quot;)
 (set: $choice_3 to &quot;&quot;)
 (set: $choice_4 to &quot;&quot;)
@@ -180,7 +181,7 @@ Sending Results
 	(set: $choice_1 to _option_3)
 	(goto: &quot;scene_2&quot;)]
 }&lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="6" name="scene_2" tags="af-3" position="98.5,425" size="200,100">{
+</tw-passagedata><tw-passagedata pid="6" name="scene_2" tags="af-3" position="98,425" size="200,100">{
 (set: _option_1 to &quot;&gt; I&#39;m excited by this opportunity to stand out to my supervisor.&quot;)
 (set: _option_2 to &quot;&gt; I am concerned that I will feel embarrassed and not be able to answer.&quot;)
 (set: _option_3 to &quot;&gt; I feel very nervous and can’t think of anything.&quot;)
@@ -203,7 +204,7 @@ What do you feel as the last person before you finishes their interpretation?
 (link: _option_3)[
 	(set: $choice_2 to _option_3)
 	(goto: &quot;scene_3&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="scene_3" tags="ch-1" position="95.5,560" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="scene_3" tags="ch-1" position="95,560" size="200,100">{
 (set: _option_1 to &quot;&gt; I will choose the hardest course. I want the challenge&quot;)
 (set: _option_2 to &quot;&gt; I will take Dr. Roger’s course so I can learn and safely pass&quot;)
 (set: _option_3 to &quot;&gt; I will take Dr Sim’s course to ensure I pass&quot;)
@@ -226,7 +227,7 @@ Which course do you choose?
 (link: _option_3)[
 	(set: $choice_3 to _option_3)
 	(goto: &quot;scene_4&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="scene_4" tags="af-2" position="93.5,687" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="scene_4" tags="af-2" position="93,687" size="200,100">{
 (set: _option_1 to &quot;&gt; It sounds like an interesting challenge to tackle.&quot;)
 (set: _option_2 to &quot;&gt; I could try, but I’d want a professional to do it so I can rest at ease.&quot;)
 (set: _option_3 to &quot;&gt; The thought of figuring interest rates alone makes me nauseous.&quot;)
@@ -249,7 +250,7 @@ How do you feel about comparing the loan options?
 (link: _option_3)[
 	(set: $choice_4 to _option_3)
 	(goto: &quot;scene_5&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="scene_5" tags="es-1" position="94.5,808" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="scene_5" tags="es-1" position="94,808" size="200,100">{
 (set: _option_1 to &quot;&gt; I will complete the budget project example by myself.&quot;)
 (set: _option_2 to &quot;&gt; I will try to help her, but I need some help from the teacher.&quot;)
 (set: _option_3 to &quot;&gt; I will fail to complete the budget plan project example.&quot;)
@@ -272,7 +273,7 @@ Do you think you will successfully help to make the example of a budget plan pro
 (link: _option_3)[
 	(set: $choice_5 to _option_3)
 	(goto: &quot;scene_6&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="scene_6" tags="af-1" position="349.5,296" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="scene_6" tags="af-1" position="349,296" size="200,100">{
 (set: _option_1 to &quot;&gt; I would do this anyway, I enjoy these kind of problems.&quot;)
 (set: _option_2 to &quot;&gt; If I didn’t have someone else check it I would never feel certain it was correct.&quot;)
 (set: _option_3 to &quot;&gt; I will be so nervous if I know what score I have to get before the test.&quot;)
@@ -295,7 +296,7 @@ How do you feel about calculating what score you have to get for the last test t
 (link: _option_3)[
 	(set: $choice_6 to _option_3)
 	(goto: &quot;scene_7&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="scene_7" tags="ch-3" position="350.5,425" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="scene_7" tags="ch-3" position="350,425" size="200,100">{
 (set: _option_1 to &quot;&gt; No hesitation. I’ll take the job.&quot;)
 (set: _option_2 to &quot;&gt; I’m uncertain and ask for some time to consider.&quot;)
 (set: _option_3 to &quot;&gt; I’ll decline and wait for an offer more within my range of ability.&quot;)
@@ -318,7 +319,7 @@ What are you going to do?
 (link: _option_3)[
 	(set: $choice_6 to _option_3)
 	(goto: &quot;scene_8&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="scene_8" tags="es-2" position="350.5,559" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="scene_8" tags="es-2" position="350,559" size="200,100">{
 (set: _option_1 to &quot;&gt; I can calculate and compare the prices at ease.&quot;)
 (set: _option_2 to &quot;&gt; I need a calculator and a little search by using the Internet, but I think I can do it.&quot;)
 (set: _option_3 to &quot;&gt; I can’t do it on my own.&quot;)
@@ -341,7 +342,7 @@ Do you expect you can complete this purchase successfully?
 (link: _option_3)[
 	(set: $choice_8 to _option_3)
 	(goto: &quot;scene_9&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="scene_9" tags="ch-2" position="349.5,684" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="scene_9" tags="ch-2" position="349,684" size="200,100">{
 (set: _option_1 to &quot;&gt; I will continue until I finish the third puzzle.&quot;)
 (set: _option_2 to &quot;&gt; I will spend a bit more time, but give up if I don’t solve it soon.&quot;)
 (set: _option_3 to &quot;&gt; I quit the minute it seemed hard.&quot;)
