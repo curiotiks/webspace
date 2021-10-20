@@ -89,13 +89,13 @@ Do you think you would accomplish this training session?
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_1 to _option_1)
+	(set: $choice_1 to &quot;High&quot;)
 	(goto: &quot;scene_2&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_1 to _option_2)
+	(set: $choice_1 to &quot;Medium&quot;)
 	(goto: &quot;scene_2&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_1 to _option_3)
+	(set: $choice_1 to &quot;Low&quot;)
 	(goto: &quot;scene_2&quot;)]
 }&lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="2" name="setup" tags="startup" position="63,105" size="100,100">(set: $uid to &quot;&quot;)
@@ -124,7 +124,7 @@ Sending Results
 	&quot;choice_6&quot;:harlowe.State.variables[&#39;choice_6&#39;],
 	&quot;choice_7&quot;:harlowe.State.variables[&#39;choice_7&#39;],
 	&quot;choice_8&quot;:harlowe.State.variables[&#39;choice_8&#39;],
-	&quot;choice_9&quot;:harlowe.State.variables[&#39;choice_9&#39;],
+	&quot;choice_9&quot;:harlowe.State.variables[&#39;choice_9&#39;]
 	});
 
 	$.ajax({
@@ -198,13 +198,13 @@ What do you feel as the last person before you finishes their interpretation?
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_2 to _option_1)
+	(set: $choice_2 to &quot;High&quot;)
 	(goto: &quot;scene_3&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_2 to _option_2)
+	(set: $choice_2 to &quot;Medium&quot;)
 	(goto: &quot;scene_3&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_2 to _option_3)
+	(set: $choice_2 to &quot;Low&quot;)
 	(goto: &quot;scene_3&quot;)]
 }&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="scene_3" tags="ch-1" position="95,560" size="200,100">{
 (set: _option_1 to &quot;&gt; I will choose the hardest course. I want the challenge&quot;)
@@ -221,13 +221,13 @@ Which course do you choose?
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_3 to _option_1)
+	(set: $choice_3 to &quot;High&quot;)
 	(goto: &quot;scene_4&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_3 to _option_2)
+	(set: $choice_3 to &quot;Medium&quot;)
 	(goto: &quot;scene_4&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_3 to _option_3)
+	(set: $choice_3 to &quot;Low&quot;)
 	(goto: &quot;scene_4&quot;)]
 }&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="scene_4" tags="af-2" position="93,687" size="200,100">{
 (set: _option_1 to &quot;&gt; It sounds like an interesting challenge to tackle.&quot;)
@@ -244,15 +244,15 @@ How do you feel about comparing the loan options?
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_4 to _option_1)
+	(set: $choice_4 to &quot;High&quot;)
 	(goto: &quot;scene_5&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_4 to _option_2)
+	(set: $choice_4 to &quot;Medium&quot;)
 	(goto: &quot;scene_5&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_4 to _option_3)
+	(set: $choice_4 to &quot;Low&quot;)
 	(goto: &quot;scene_5&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="scene_5" tags="es-1" position="94,808" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="scene_5" tags="es-1" position="93,808" size="200,100">{
 (set: _option_1 to &quot;&gt; I will complete the budget project example by myself.&quot;)
 (set: _option_2 to &quot;&gt; I will try to help her, but I need some help from the teacher.&quot;)
 (set: _option_3 to &quot;&gt; I will fail to complete the budget plan project example.&quot;)
@@ -267,13 +267,13 @@ Do you think you will successfully help to make the example of a budget plan pro
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_5 to _option_1)
+	(set: $choice_5 to &quot;High&quot;)
 	(goto: &quot;scene_6&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_5 to _option_2)
+	(set: $choice_5 to &quot;Medium&quot;)
 	(goto: &quot;scene_6&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_5 to _option_3)
+	(set: $choice_5 to &quot;Low&quot;)
 	(goto: &quot;scene_6&quot;)]
 }&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="scene_6" tags="af-1" position="349,296" size="200,100">{
 (set: _option_1 to &quot;&gt; I would do this anyway, I enjoy these kind of problems.&quot;)
@@ -290,13 +290,13 @@ How do you feel about calculating what score you have to get for the last test t
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_6 to _option_1)
+	(set: $choice_6 to &quot;High&quot;)
 	(goto: &quot;scene_7&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_6 to _option_2)
+	(set: $choice_6 to &quot;Medium&quot;)
 	(goto: &quot;scene_7&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_6 to _option_3)
+	(set: $choice_6 to &quot;Low&quot;)
 	(goto: &quot;scene_7&quot;)]
 }&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="scene_7" tags="ch-3" position="350,425" size="200,100">{
 (set: _option_1 to &quot;&gt; No hesitation. I’ll take the job.&quot;)
@@ -313,13 +313,13 @@ What are you going to do?
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_6 to _option_1)
+	(set: $choice_6 to &quot;High&quot;)
 	(goto: &quot;scene_8&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_6 to _option_2)
+	(set: $choice_6 to &quot;Medium&quot;)
 	(goto: &quot;scene_8&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_6 to _option_3)
+	(set: $choice_6 to &quot;Low&quot;)
 	(goto: &quot;scene_8&quot;)]
 }&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="scene_8" tags="es-2" position="350,559" size="200,100">{
 (set: _option_1 to &quot;&gt; I can calculate and compare the prices at ease.&quot;)
@@ -336,15 +336,15 @@ Do you expect you can complete this purchase successfully?
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_8 to _option_1)
+	(set: $choice_8 to &quot;High&quot;)
 	(goto: &quot;scene_9&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_8 to _option_2)
+	(set: $choice_8 to &quot;Medium&quot;)
 	(goto: &quot;scene_9&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_8 to _option_3)
+	(set: $choice_8 to &quot;Low&quot;)
 	(goto: &quot;scene_9&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="scene_9" tags="ch-2" position="349,684" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="scene_9" tags="ch-2" position="348,684" size="200,100">{
 (set: _option_1 to &quot;&gt; I will continue until I finish the third puzzle.&quot;)
 (set: _option_2 to &quot;&gt; I will spend a bit more time, but give up if I don’t solve it soon.&quot;)
 (set: _option_3 to &quot;&gt; I quit the minute it seemed hard.&quot;)
@@ -359,13 +359,13 @@ What are you going to do?
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_9 to _option_1)
+	(set: $choice_9 to &quot;High&quot;)
 	(goto: &quot;sendResults&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_9 to _option_2)
+	(set: $choice_9 to &quot;Medium&quot;)
 	(goto: &quot;sendResults&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_9 to _option_3)
+	(set: $choice_9 to &quot;Low&quot;)
 	(goto: &quot;sendResults&quot;)]
 }&lt;/div&gt;</tw-passagedata></tw-storydata>
 
