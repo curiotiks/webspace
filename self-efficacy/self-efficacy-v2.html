@@ -14,14 +14,17 @@
 <tw-storydata name="self_efficacy_ecd" startnode="4" creator="Twine" creator-version="2.3.9" ifid="10919ABA-83FA-44E9-97E1-F4CF90F737C4" zoom="1" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">/*https://www.color-hex.com/color-palette/115590*/
 
 tw-story {
-	margin: 0px;
+  	margin: 0px;
 	padding: 0px;
+   	height: auto;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
 	background-color: #cce1f4;
-	height: 500px;
-	position: relative; 
 	opacity: 75%;
+}
+
+tw-passage {
+ 	height: auto; 
 }
 
 tw-link {
@@ -136,7 +139,16 @@ Sending Results
 			console.log(&#39;Worked&#39;)
 			});
 
-&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="welcome-page" tags="" position="195,149" size="100,100">&lt;style&gt;
+&lt;/script&gt;</tw-passagedata><tw-passagedata pid="4" name="welcome-page" tags="" position="195,149" size="100,100">	&lt;div class=&quot;center-text&quot;&gt;
+	&lt;p&gt;Welcome to the self-efficacy interactive assessment. Over the following scenes you&#39;ll read about a situation you may have or could have experienced at some point during your schooling or life. Below each scenario is three potential responses to the presented scenario. Please select which option you believe &lt;i&gt; most closely &lt;/i&gt;represents how you would respond in that situation.&lt;/p&gt;
+	=&gt;&lt;=
+[[Next|scene_1]]
+&lt;/div&gt;
+
+{
+(set: $uid to (prompt: &quot;What is the unique identifier?&quot;, &quot;####&quot;))
+}
+&lt;style&gt;
 .center-text {
 	padding-bottom: 20px;
 	width: 50%;
@@ -148,20 +160,7 @@ Sending Results
 	padding: 20px;
 }
 
-
-
-&lt;/style&gt;
-{
-(set: $uid to (prompt: &quot;What is the unique identifier?&quot;, &quot;####&quot;))
-}
-
-	&lt;div class=&quot;center-text&quot;&gt;
-	&lt;p&gt;Welcome to the self-efficacy interactive assessment. Over the following scenes you&#39;ll read about a situation you may have or could have experienced at some point during your schooling or life. Below each scenario is three potential responses to the presented scenario. Please select which option you believe &lt;i&gt; most closely &lt;/i&gt;represents how you would respond in that situation.&lt;/p&gt;
-	=&gt;&lt;=
-[[Next|scene_1]]
-&lt;/div&gt;
-
-</tw-passagedata><tw-passagedata pid="5" name="template" tags="" position="356,123" size="100,100">{
+&lt;/style&gt;</tw-passagedata><tw-passagedata pid="5" name="template" tags="" position="356,123" size="100,100">{
 (set: _option_1 to &quot;A. Regardless of the instructor, I&#39;ll succeed!.&quot;)
 (set: _option_2 to &quot;B. I might be able to pass, but only with help.&quot;)
 (set: _option_3 to &quot;C. I could never pass even with an easy instructor.&quot;)
