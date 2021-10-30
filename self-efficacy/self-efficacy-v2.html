@@ -77,7 +77,7 @@ tw-dialog {
 }
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">if (!window.harlowe){
 	window.harlowe = {"State": State};
-}</script><tw-passagedata pid="1" name="scene_1" tags="es-3" position="100,297" size="200,100">{
+}</script><tw-passagedata pid="1" name="scene_1" tags="es-3" position="98,297" size="200,100">{
 (set: _option_1 to &quot;&gt; I will successfully accomplish the training session. &quot;)
 (set: _option_2 to &quot;&gt; I will join the session, but I am not sure that I will do well. &quot;)
 (set: _option_3 to &quot;&gt; I know I won’t succeed in the training course. &quot;)
@@ -110,12 +110,15 @@ Do you think you would accomplish this training session?
 (set: $choice_6 to &quot;&quot;)
 (set: $choice_7 to &quot;&quot;)
 (set: $choice_8 to &quot;&quot;)
-(set: $choice_9 to &quot;&quot;)</tw-passagedata><tw-passagedata pid="3" name="sendResults" tags="" position="646,466" size="100,100">&lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;&gt;
+(set: $choice_9 to &quot;&quot;)</tw-passagedata><tw-passagedata pid="3" name="sendResults" tags="" position="644,465" size="100,100">&lt;script src=&quot;https://code.jquery.com/jquery-3.6.0.min.js&quot;&gt;
 console.log(&quot;loaded jquery&quot;)
 &lt;/script&gt; 
 
-Sending Results
-
+&lt;div class=&quot;flex-container&quot;&gt;
+&lt;div&gt;
+You are done with the scenario-based questionnaire. You may close &lt;b&gt; this window&lt;/b&gt; and return to Qualtrics to complete the rest of the study. 
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;script&gt;
 	var sendData =JSON.stringify({
 	&quot;uid&quot;:harlowe.State.variables[&#39;uid&#39;],
@@ -146,7 +149,7 @@ Sending Results
 &lt;/div&gt;
 
 {
-(set: $uid to (prompt: &quot;What is the unique identifier?&quot;, &quot;####&quot;))
+(set: $uid to (prompt: &quot;Please enter the ID number from the survey.&quot;, &quot;&quot;))
 }
 &lt;style&gt;
 .center-text {
@@ -189,7 +192,7 @@ Sending Results
 }
 
 &lt;div class=&quot;flex-container&quot;&gt;	
-	&lt;img src=&quot;https://i.ibb.co/89HWdyY/IS1-6.png&quot; alt=&quot;IS1-6&quot;&gt;
+	&lt;img src=&quot;https://i.ibb.co/BPcwXRq/Scenario-2.png&quot; alt=&quot;Scenario-2&quot;&gt;
 	&lt;div&gt;You just been tentatively offered your dream job. However, you have to complete a preliminary training program to secure your position. In the first session, the instructor presents a slide with graphs and statistics. The instructor asks each trainee to give their interpretation of the data. You’ll soon be next. 
 
 What do you feel as the last person before you finishes their interpretation?
@@ -212,7 +215,7 @@ What do you feel as the last person before you finishes their interpretation?
 }
 
 &lt;div class=&quot;flex-container&quot;&gt;	
-	&lt;img src=&quot;https://i.ibb.co/89HWdyY/IS1-6.png&quot; alt=&quot;IS1-6&quot;&gt;
+	&lt;img src=&quot;https://i.ibb.co/VH0f3fS/Scenario-3.png&quot; alt=&quot;Scenario-3&quot;&gt;
 	&lt;div&gt;Course enrollment for the next semester has opened and you are enrolling. Earlier in the afternoon another student told you that the three available courses are quite different. The course taught by Dr. Sim’s course is easy to pass with little effort. Dr. Rogers requires decent work, but is manageable. Dr. Torrin’s class, however, requires a lot of work and her tests are hard but you will learn. 
 
 Which course do you choose?
@@ -235,7 +238,7 @@ Which course do you choose?
 }
 
 &lt;div class=&quot;flex-container&quot;&gt;	
-	&lt;img src=&quot;https://i.ibb.co/89HWdyY/IS1-6.png&quot; alt=&quot;IS1-6&quot;&gt;
+	&lt;img src=&quot;https://i.ibb.co/rwVmb2N/Scenario-4.png&quot; alt=&quot;Scenario-4&quot;&gt;
 	&lt;div&gt;You have a very limited budget this year, so you have to take out a loan from the bank. The bank gives you two options with different interest rates. You have to determine how much interest you will end up paying on either loan. There are two options, which are a long-term payment with higher interest and a short-term payment with lower interest.
 
 How do you feel about comparing the loan options?
@@ -251,14 +254,14 @@ How do you feel about comparing the loan options?
 (link: _option_3)[
 	(set: $choice_4 to &quot;Low&quot;)
 	(goto: &quot;scene_5&quot;)]
-}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="scene_5" tags="es-1" position="93,808" size="200,100">{
+}&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="scene_5" tags="es-1" position="93,809" size="200,100">{
 (set: _option_1 to &quot;&gt; I will complete the budget project example by myself.&quot;)
 (set: _option_2 to &quot;&gt; I will try to help her, but I need some help from the teacher.&quot;)
 (set: _option_3 to &quot;&gt; I will fail to complete the budget plan project example.&quot;)
 }
 
 &lt;div class=&quot;flex-container&quot;&gt;	
-	&lt;img src=&quot;https://i.ibb.co/89HWdyY/IS1-6.png&quot; alt=&quot;IS1-6&quot;&gt;
+	&lt;img src=&quot;https://i.ibb.co/p0sSnd1/Scenario-5.png&quot; alt=&quot;Scenario-5&quot;&gt;
 	&lt;div&gt;You are a high school student. This month, your homeroom teacher wants to teach students how to make a budget plan. Before starting the budget plan project, she wants to provide an example of a budget plan project. Thus, she searches for a volunteer to help her make an example that includes realistic budget considerations that high school students should consider, like college tuition, entertainment, and saving for a car.
 
 Do you think you will successfully help to make the example of a budget plan project?
@@ -281,7 +284,7 @@ Do you think you will successfully help to make the example of a budget plan pro
 }
 
 &lt;div class=&quot;flex-container&quot;&gt;	
-	&lt;img src=&quot;https://i.ibb.co/89HWdyY/IS1-6.png&quot; alt=&quot;IS1-6&quot;&gt;
+	&lt;img src=&quot;https://i.ibb.co/54NPwfr/Scenario-6.png&quot; alt=&quot;Scenario-6&quot;&gt;
 	&lt;div&gt;Five grammar tests are to be given to your English class. Each test has a value of 30 points. You have to have an average of higher than 80% on all the tests to pass this course. 
 
 How do you feel about calculating what score you have to get for the last test to pass this course? 
@@ -304,7 +307,7 @@ How do you feel about calculating what score you have to get for the last test t
 }
 
 &lt;div class=&quot;flex-container&quot;&gt;	
-	&lt;img src=&quot;https://i.ibb.co/89HWdyY/IS1-6.png&quot; alt=&quot;IS1-6&quot;&gt;
+	&lt;img src=&quot;https://i.ibb.co/wyxpKLw/Scenario-7.png&quot; alt=&quot;Scenario-7&quot;&gt;
 	&lt;div&gt;You just graduated and are looking for a job. Finally, an offer comes, but it’s a job you didn’t think you could get. The job pays well, but requires working with more technical details than you anticipated. You’ll be working with quite a few mathematical processes you’re not sure you remember. 
  
 What are you going to do? 
@@ -312,13 +315,13 @@ What are you going to do?
 &lt;/div&gt;
 &lt;div class=&quot;option-box&quot;&gt;{
 (link: _option_1)[
-	(set: $choice_6 to &quot;High&quot;)
+	(set: $choice_7 to &quot;High&quot;)
 	(goto: &quot;scene_8&quot;)] &lt;br&gt;
 (link: _option_2)[
-	(set: $choice_6 to &quot;Medium&quot;)
+	(set: $choice_7 to &quot;Medium&quot;)
 	(goto: &quot;scene_8&quot;)] &lt;br&gt;
 (link: _option_3)[
-	(set: $choice_6 to &quot;Low&quot;)
+	(set: $choice_7 to &quot;Low&quot;)
 	(goto: &quot;scene_8&quot;)]
 }&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="scene_8" tags="es-2" position="350,559" size="200,100">{
 (set: _option_1 to &quot;&gt; I can calculate and compare the prices at ease.&quot;)
@@ -327,7 +330,7 @@ What are you going to do?
 }
 
 &lt;div class=&quot;flex-container&quot;&gt;	
-	&lt;img src=&quot;https://i.ibb.co/89HWdyY/IS1-6.png&quot; alt=&quot;IS1-6&quot;&gt;
+	&lt;img src=&quot;https://i.ibb.co/Hr35DGL/Scenario-8.png&quot; alt=&quot;Scenario-8&quot;&gt;
 	&lt;div&gt;The seasons have changed. It has been getting cold, so you want to buy new clothes for this fall and winter season. You’ve been browsing several clothing brands online. You’ve found three jackets from three different brands. However, to compare the cost of the three jackets, you need to calculate the price, sales taxes, and delivery fees.
 
 Do you expect you can complete this purchase successfully?
@@ -350,7 +353,7 @@ Do you expect you can complete this purchase successfully?
 }
 
 &lt;div class=&quot;flex-container&quot;&gt;	
-	&lt;img src=&quot;https://i.ibb.co/89HWdyY/IS1-6.png&quot; alt=&quot;IS1-6&quot;&gt;
+	&lt;img src=&quot;https://i.ibb.co/7S4TknB/Scenario-9.png&quot; alt=&quot;Scenario-9&quot;&gt;
 	&lt;div&gt;You’re on spring break! To disconnect and recharge, you and your family spend a week in a mountain cottage. You find a book of Sudoku puzzles in the living room. While waiting for the rest of your family to wake up from their nap, you decide to play. On the first and second page, you can finish easily. You then start the third page and it’s much harder. All your family members are still sleeping. 
 
 What are you going to do?
