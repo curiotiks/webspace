@@ -6,7 +6,7 @@ Math anxiety is an issue. As a country and a world we could probably benefit fro
 
 This first one is math anxiety (m_anxi) and mean math score. Clearly a negative relationship. As m_anxi increases, scores decrease. That's logical. 
 
-![[scatter_meanscore_anxiety.png]]
+![[img/scatter_meanscore_anxiety.png]]
 
 The next plot shows the same comparison but with mathematical self-efficacy (m_se). Opposite direction, as m_se increases so does the mean score. Interesting, the $R^2$ is nearly identical ($R^2_{m\_anxi} = 0.31, R^2_{m\_se} = 0.37$). 
 
