@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Random_NN.ipynb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7ec3e6;}
+.s1 { color: #ed864a;}
+.s2 { color: #ebebeb;}
+.s3 { color: #54b33e;}
+.s4 { color: #ed864a; font-weight: bold;}
+.s5 { color: #33ccff; font-weight: bold;}
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Random_NN.ipynb</font>
+</center></td></tr></table>
+<pre><a name="l1"><span class="ln">1    </span></a><span class="s0">#%% 
+<a name="l2"><span class="ln">2    </span></a></span><span class="s1">import </span><span class="s2">pandas </span><span class="s1">as </span><span class="s2">pd</span>
+<a name="l3"><span class="ln">3    </span></a><span class="s1">import </span><span class="s2">numpy </span><span class="s1">as </span><span class="s2">np</span>
+<a name="l4"><span class="ln">4    </span></a><span class="s1">from </span><span class="s2">sklearn.model_selection </span><span class="s1">import </span><span class="s2">train_test_split</span>
+<a name="l5"><span class="ln">5    </span></a><span class="s1">from </span><span class="s2">matplotlib </span><span class="s1">import </span><span class="s2">pyplot </span><span class="s1">as </span><span class="s2">plt</span>
+<a name="l6"><span class="ln">6    </span></a><span class="s2">%matplotlib inline</span>
+<a name="l7"><span class="ln">7    </span></a><span class="s1">from </span><span class="s2">keras.models </span><span class="s1">import </span><span class="s2">Sequential</span>
+<a name="l8"><span class="ln">8    </span></a><span class="s1">from </span><span class="s2">keras.layers </span><span class="s1">import </span><span class="s2">Dense</span>
+<a name="l9"><span class="ln">9    </span></a><span class="s0">#%% 
+<a name="l10"><span class="ln">10   </span></a></span><span class="s2">focus_columns = [</span><span class="s3">'level_duration'</span><span class="s4">,</span>
+<a name="l11"><span class="ln">11   </span></a>                 <span class="s3">'ob_id_ramp'</span><span class="s4">, </span><span class="s3">'ob_id_lever'</span><span class="s4">, </span><span class="s3">'ob_id_spgbrd'</span><span class="s4">, </span><span class="s3">'ob_id_pendulum'</span><span class="s4">,</span>
+<a name="l12"><span class="ln">12   </span></a>                 <span class="s3">'ob_id_weight'</span><span class="s4">, </span><span class="s3">'ob_comp_freeform'</span><span class="s4">, </span><span class="s3">'ob_comp_pin'</span><span class="s4">,</span>
+<a name="l13"><span class="ln">13   </span></a>                 <span class="s3">'CompDiff'</span><span class="s4">, </span><span class="s3">'pre_total'</span><span class="s2">]</span>
+<a name="l14"><span class="ln">14   </span></a>
+<a name="l15"><span class="ln">15   </span></a><span class="s2">data = pd.read_csv(</span><span class="s3">&quot;~/Downloads/updated_BIG_data_1.csv&quot;</span><span class="s2">)[focus_columns].dropna() </span><span class="s0"># Drop all NA values and select focus_columns</span>
+<a name="l16"><span class="ln">16   </span></a>
+<a name="l17"><span class="ln">17   </span></a><span class="s2">predictors = data.drop(columns=[</span><span class="s3">'level_duration'</span><span class="s2">])</span>
+<a name="l18"><span class="ln">18   </span></a><span class="s2">num_columns = predictors.shape[</span><span class="s5">1</span><span class="s2">] </span><span class="s0"># for modeling building</span>
+<a name="l19"><span class="ln">19   </span></a>
+<a name="l20"><span class="ln">20   </span></a><span class="s2">response = np.log(data.level_duration).replace([np.inf</span><span class="s4">, </span><span class="s2">-np.inf]</span><span class="s4">, </span><span class="s2">np.nan).fillna(</span><span class="s5">0</span><span class="s2">).round(</span><span class="s5">0</span><span class="s2">)</span>
+<a name="l21"><span class="ln">21   </span></a><span class="s2">response.describe()</span>
+<a name="l22"><span class="ln">22   </span></a>
+<a name="l23"><span class="ln">23   </span></a><span class="s0">#%% 
+<a name="l24"><span class="ln">24   </span></a></span><span class="s2">num_columns = predictors.shape[</span><span class="s5">1</span><span class="s2">]</span>
+<a name="l25"><span class="ln">25   </span></a><span class="s2">print(</span><span class="s3">f'There are </span><span class="s1">{</span><span class="s2">data.shape[</span><span class="s5">0</span><span class="s2">]</span><span class="s1">} </span><span class="s3">rows and </span><span class="s1">{</span><span class="s2">data.shape[</span><span class="s5">1</span><span class="s2">]</span><span class="s1">} </span><span class="s3">columns.'</span><span class="s2">)</span>
+<a name="l26"><span class="ln">26   </span></a><span class="s2">print(</span><span class="s3">f&quot;The predicted variable, level_duration, is column index: </span><span class="s1">{</span><span class="s2">data.columns.get_loc(</span><span class="s3">'level_duration'</span><span class="s2">)</span><span class="s1">}</span><span class="s3">&quot;</span><span class="s2">)</span>
+<a name="l27"><span class="ln">27   </span></a><span class="s0">#%% 
+<a name="l28"><span class="ln">28   </span></a></span><span class="s2">X_train</span><span class="s4">, </span><span class="s2">X_test</span><span class="s4">, </span><span class="s2">y_train</span><span class="s4">, </span><span class="s2">y_test = train_test_split(predictors</span><span class="s4">, </span><span class="s2">response</span><span class="s4">, </span><span class="s2">test_size=</span><span class="s5">0.2</span><span class="s2">)</span>
+<a name="l29"><span class="ln">29   </span></a><span class="s2">num_columns = X_train.shape[</span><span class="s5">1</span><span class="s2">]</span>
+<a name="l30"><span class="ln">30   </span></a>
+<a name="l31"><span class="ln">31   </span></a><span class="s2">print(</span><span class="s3">&quot;For X: Train:&quot;</span><span class="s4">, </span><span class="s2">X_train.shape</span><span class="s4">,</span><span class="s3">&quot;Test: &quot;</span><span class="s4">, </span><span class="s2">X_test.shape)</span>
+<a name="l32"><span class="ln">32   </span></a><span class="s2">print(</span><span class="s3">&quot;For Y: Train:&quot;</span><span class="s4">, </span><span class="s2">y_train.shape</span><span class="s4">,</span><span class="s3">&quot;Test: &quot;</span><span class="s4">, </span><span class="s2">y_test.shape)</span>
+<a name="l33"><span class="ln">33   </span></a><span class="s0">#%% md 
+<a name="l34"><span class="ln">34   </span></a></span><span class="s2">## Building and Fit the Model 
+<a name="l35"><span class="ln">35   </span></a></span><span class="s0">#%% 
+<a name="l36"><span class="ln">36   </span></a></span><span class="s2">model = Sequential()</span>
+<a name="l37"><span class="ln">37   </span></a><span class="s2">model.add(Dense(</span><span class="s5">12</span><span class="s4">, </span><span class="s2">input_dim=num_columns</span><span class="s4">, </span><span class="s2">activation=</span><span class="s3">'relu'</span><span class="s4">, </span><span class="s2">name=</span><span class="s3">'input'</span><span class="s2">))</span>
+<a name="l38"><span class="ln">38   </span></a><span class="s2">model.add(Dense(</span><span class="s5">6</span><span class="s4">, </span><span class="s2">activation=</span><span class="s3">'relu'</span><span class="s4">, </span><span class="s2">name=</span><span class="s3">'hidden_6'</span><span class="s2">))</span>
+<a name="l39"><span class="ln">39   </span></a><span class="s2">model.add(Dense(</span><span class="s5">3</span><span class="s4">, </span><span class="s2">activation=</span><span class="s3">'relu'</span><span class="s4">, </span><span class="s2">name=</span><span class="s3">'hidden_3'</span><span class="s2">))</span>
+<a name="l40"><span class="ln">40   </span></a><span class="s2">model.add(Dense(</span><span class="s5">1</span><span class="s4">, </span><span class="s2">activation=</span><span class="s3">'linear'</span><span class="s4">, </span><span class="s2">name=</span><span class="s3">'exit'</span><span class="s2">))</span>
+<a name="l41"><span class="ln">41   </span></a>
+<a name="l42"><span class="ln">42   </span></a>
+<a name="l43"><span class="ln">43   </span></a><span class="s0">#Compile</span>
+<a name="l44"><span class="ln">44   </span></a><span class="s2">model.compile(loss=</span><span class="s3">'mse'</span><span class="s4">,</span>
+<a name="l45"><span class="ln">45   </span></a>              <span class="s2">optimizer=</span><span class="s3">'adam'</span><span class="s4">,</span>
+<a name="l46"><span class="ln">46   </span></a>              <span class="s2">metrics = [</span><span class="s3">'accuracy'</span><span class="s2">])</span>
+<a name="l47"><span class="ln">47   </span></a><span class="s0">#Fit model</span>
+<a name="l48"><span class="ln">48   </span></a><span class="s2">model.fit(X_train</span><span class="s4">, </span><span class="s2">y_train</span><span class="s4">, </span><span class="s2">epochs=</span><span class="s5">10</span><span class="s4">, </span><span class="s2">batch_size=</span><span class="s5">20</span><span class="s2">)</span>
+<a name="l49"><span class="ln">49   </span></a><span class="s0">#%% 
+<a name="l50"><span class="ln">50   </span></a></span><span class="s2">score = model.evaluate(X_test</span><span class="s4">, </span><span class="s2">y_test</span><span class="s4">, </span><span class="s2">verbose = </span><span class="s5">0</span><span class="s2">)</span>
+<a name="l51"><span class="ln">51   </span></a><span class="s2">print(</span><span class="s3">'Test loss:'</span><span class="s4">, </span><span class="s2">score[</span><span class="s5">0</span><span class="s2">])</span>
+<a name="l52"><span class="ln">52   </span></a><span class="s2">print(</span><span class="s3">'Test Accuracy:'</span><span class="s4">, </span><span class="s2">score[</span><span class="s5">1</span><span class="s2">])</span>
+<a name="l53"><span class="ln">53   </span></a><span class="s0">#%% 
+<a name="l54"><span class="ln">54   </span></a></span><span class="s2">print(model.summary())</span>
+<a name="l55"><span class="ln">55   </span></a><span class="s0">#%% 
+<a name="l56"><span class="ln">56   </span></a></span><span class="s1">from </span><span class="s2">sklearn.metrics </span><span class="s1">import </span><span class="s2">confusion_matrix</span>
+<a name="l57"><span class="ln">57   </span></a><span class="s1">from </span><span class="s2">seaborn </span><span class="s1">import </span><span class="s2">heatmap</span>
+<a name="l58"><span class="ln">58   </span></a>
+<a name="l59"><span class="ln">59   </span></a><span class="s2">y_predicted = model.predict(X_test).round(</span><span class="s5">0</span><span class="s2">)</span>
+<a name="l60"><span class="ln">60   </span></a><span class="s2">conf_mat = confusion_matrix(y_test</span><span class="s4">, </span><span class="s2">y_predicted)</span>
+<a name="l61"><span class="ln">61   </span></a><span class="s2">heatmap(conf_mat</span><span class="s4">, </span><span class="s2">square=</span><span class="s1">True</span><span class="s4">, </span><span class="s2">annot=</span><span class="s1">True</span><span class="s4">, </span><span class="s2">cmap=</span><span class="s3">'Blues'</span><span class="s4">, </span><span class="s2">fmt=</span><span class="s3">'d'</span><span class="s4">, </span><span class="s2">cbar=</span><span class="s1">False</span><span class="s4">, </span><span class="s2">)</span>
+<a name="l62"><span class="ln">62   </span></a><span class="s2">plt.savefig(</span><span class="s3">'conf_mat.png'</span><span class="s4">, </span><span class="s2">dpi=</span><span class="s5">300</span><span class="s2">)</span>
+<a name="l63"><span class="ln">63   </span></a><span class="s0">#%% 
+<a name="l64"><span class="ln">64   </span></a></span></pre>
+</body>
+</html>
