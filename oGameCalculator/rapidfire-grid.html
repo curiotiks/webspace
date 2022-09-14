@@ -7,6 +7,24 @@
 
 <body>
     <style type="text/css">
+        .lightfighter {
+            width: 80px;
+            height: 80px;
+            display: inline-block;
+            background: url("images/ship-sprites-80.png") no-repeat;
+            background-position: -160px 0px;
+            border-radius: 10px;
+        }
+        
+        .heavyfighter {
+            width: 80px;
+            height: 80px;
+            display: inline-block;
+            background: url("images/ship-sprites-80.png") no-repeat;
+            background-position: -240px 0;
+            border-radius: 10px;
+        }
+        
         .tg {
             border-collapse: collapse;
             border-spacing: 0;
@@ -18,19 +36,11 @@
             border-style: solid;
             border-width: 1px;
             padding: 10px 20px;
+            overflow-x: auto;
         }
         
         .tg tr {
             white-space: nowrap;
-        }
-        
-        .redLabel {
-            background-color: red;
-        }
-        
-        .greenLabel {
-            background-color: green;
-            transform: rotate(180deg);
         }
         
         div.vertical {
@@ -46,93 +56,92 @@
             line-height: -20px;
             text-align: left;
         }
+        
+        tr:hover {
+            background-color: red;
+            color: white;
+        }
     </style>
 
     <table class="tg">
         <tbody>
             <tr>
-                <th colspan="2"></th>
-                <th colspan="25" class='redLabel'>
-                    <div>Received Rapidfire</div>
+                <td colspan="2" style="background: white"></td>
+                <th class="lightfighter">
+                    <div class="lightfighter"></div>
                 </th>
-            </tr>
-            <tr class='vertical'>
-                <td colspan="2" style="border-style: none"></td>
-                <td>
-                    <div class='vertical'>Light Fighter</div>
-                </td>
-                <td>
-                    <div class='vertical'>Heavy Fighter</div>
-                </td>
-                <td>
+                <th>
+                    <div class="heavyfighter"></div>
+                </th>
+                <th>
                     <div class='vertical'>Cruiser</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Battleship</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Battlecruiser</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Bomber</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Destroyer</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Deathstar</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Reaper</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Pathfinder</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Small Cargo</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Large Cargo</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Colony Ship</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Recycler</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Espionage Probe</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Solar Satellite</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Crawler</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Rocket Launcher</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Light Laser</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Heavy Laser</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Ion Cannon</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Gauss Cannon</div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <div class='vertical'>Plasma Turrent</div>
-                </td>
+                </th>
             </tr>
             <tr>
                 <td class="greenLabel" rowspan="26">
                     <div class='vertical'>Rapidfire Against...</div>
                 </td>
-                <td>Light Fighter</td>
+                <td class="lightfighter"></td>
                 <td class="tg-0lax ">-</td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax "></td>
@@ -158,7 +167,7 @@
                 <td class="tg-0lax "></td>
             </tr>
             <tr>
-                <td>Heavy Fighter</td>
+                <td class="heavyfighter"></td>
                 <td class="tg-0lax "></td>
                 <td class="tg-0lax ">-</td>
                 <td class="tg-0lax "></td>

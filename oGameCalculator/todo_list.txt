@@ -1,3 +1,0 @@
-* Create the table page
-* Move contents from index to a new page.
-* Create a new oGame homepage
