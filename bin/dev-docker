@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+if ! command -v docker >/dev/null 2>&1; then
+  echo "Docker not found. Install Docker Desktop or use: bin/dev"
+  exit 1
+fi
+
+IMAGE="${JEKYLL_IMAGE:-jekyll/jekyll:4.2}"
+
+exec docker run --rm \
+  -p 4000:4000 \
+  -p 35729:35729 \
+  -v "$PWD":/srv/jekyll \
+  "$IMAGE" \
+  jekyll serve \
+    --livereload \
+    --host 0.0.0.0 \
+    --port 4000 \
+    --incremental

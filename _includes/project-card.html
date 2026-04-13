@@ -1,0 +1,8 @@
+<article class="project-card">
+  <p class="project-card__meta">
+    <span>{{ include.project.status }}</span>
+    <span>{{ include.project.timeframe }}</span>
+  </p>
+  <h3><a href="{{ include.project.url | relative_url }}">{{ include.project.title }}</a></h3>
+  <p>{{ include.project.summary }}</p>
+</article>

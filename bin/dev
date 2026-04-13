@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+if ! command -v bundle >/dev/null 2>&1; then
+  echo "Bundler not found. Install it with: gem install bundler"
+  exit 1
+fi
+
+RUBY_BIN="$(ruby -rrbconfig -e 'print RbConfig.ruby')"
+if [[ "${RUBY_BIN}" == /System/Library/* ]] || ruby -v | grep -q "ruby 2\\.6\\."; then
+  BREW_RUBY_BIN="/opt/homebrew/opt/ruby/bin"
+  BREW_RUBY_GEM_BIN="/opt/homebrew/lib/ruby/gems/4.0.0/bin"
+
+  if [[ -x "${BREW_RUBY_BIN}/ruby" ]]; then
+    export PATH="${BREW_RUBY_BIN}:${BREW_RUBY_GEM_BIN}:${PATH}"
+    exec "$0" "$@"
+  fi
+
+  echo "Detected macOS system Ruby (${RUBY_BIN})."
+  echo "Jekyll dependencies often fail to compile against system Ruby on modern macOS."
+  echo ""
+  echo "Recommended fix:"
+  echo "  brew install ruby"
+  echo "  export PATH=\"/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/4.0.0/bin:$PATH\""
+  echo "  gem install bundler"
+  echo "  bin/dev"
+  echo ""
+  echo "If you already installed Homebrew Ruby, ensure it comes first in PATH:"
+  echo "  which ruby"
+  echo "  ruby -v"
+  exit 1
+fi
+
+bundle config set path "vendor/bundle" >/dev/null
+if command -v brew >/dev/null 2>&1; then
+  OPENSSL_DIR=""
+  if brew --prefix openssl@3 >/dev/null 2>&1; then
+    OPENSSL_DIR="$(brew --prefix openssl@3)"
+  elif brew --prefix openssl@1.1 >/dev/null 2>&1; then
+    OPENSSL_DIR="$(brew --prefix openssl@1.1)"
+  elif brew --prefix openssl >/dev/null 2>&1; then
+    OPENSSL_DIR="$(brew --prefix openssl)"
+  fi
+
+  if [[ -n "${OPENSSL_DIR}" ]]; then
+    bundle config set build.eventmachine "--with-openssl-dir=${OPENSSL_DIR}" >/dev/null || true
+  fi
+fi
+
+if ! bundle install; then
+  echo ""
+  echo "Bundle install failed (native extensions are common on macOS)."
+  echo ""
+  echo "Fix (macOS):"
+  echo "  xcode-select --install"
+  echo "  brew install openssl@3"
+  echo "  bundle config set build.eventmachine --with-openssl-dir=$(brew --prefix openssl@3)"
+  echo "  bundle install"
+  echo ""
+  echo "If you prefer not to set up toolchains locally, use Docker preview:"
+  echo "  bin/dev-docker"
+  exit 1
+fi
+
+exec bundle exec jekyll serve \
+  --host 127.0.0.1 \
+  --port 4000 \
+  --incremental

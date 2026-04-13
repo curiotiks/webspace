@@ -1,0 +1,106 @@
+name: Deploy (GitHub Pages + optional China mirror)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: site
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      - name: Upload mirror artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: ./_site
+
+  deploy_pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  deploy_tencent_cos_mirror:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ secrets.TENCENT_SECRET_ID != '' && secrets.TENCENT_SECRET_KEY != '' && secrets.TENCENT_COS_BUCKET != '' && secrets.TENCENT_COS_REGION != '' }}
+    steps:
+      - name: Download built site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site
+
+      - name: Sync to Tencent COS (optional mirror)
+        uses: sylingd/tencent-cos-and-cdn-action@v1
+        with:
+          secret_id: ${{ secrets.TENCENT_SECRET_ID }}
+          secret_key: ${{ secrets.TENCENT_SECRET_KEY }}
+          cos_bucket: ${{ secrets.TENCENT_COS_BUCKET }}
+          cos_region: ${{ secrets.TENCENT_COS_REGION }}
+          local_path: site
+          remote_path: ""
+          clean: true
+
+  deploy_aliyun_oss_mirror:
+    needs: build
+    runs-on: ubuntu-latest
+    if: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID != '' && secrets.ALIYUN_OSS_ACCESS_KEY_SECRET != '' && secrets.ALIYUN_OSS_ENDPOINT != '' && secrets.ALIYUN_OSS_BUCKET != '' }}
+    steps:
+      - name: Download built site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site
+
+      - name: Install ossutil
+        run: |
+          set -euo pipefail
+          curl -fsSL -o ossutil64.zip "https://gosspublic.alicdn.com/ossutil/1.7.19/ossutil-v1.7.19-linux-amd64.zip"
+          unzip -q ossutil64.zip
+          chmod +x ossutil-v1.7.19-linux-amd64/ossutil64
+          sudo mv ossutil-v1.7.19-linux-amd64/ossutil64 /usr/local/bin/ossutil64
+
+      - name: Configure ossutil
+        run: |
+          set -euo pipefail
+          ossutil64 config -e "${{ secrets.ALIYUN_OSS_ENDPOINT }}" -i "${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}" -k "${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}" --loglevel info
+
+      - name: Sync to OSS (optional mirror)
+        run: |
+          set -euo pipefail
+          ossutil64 sync -f --delete site "oss://${{ secrets.ALIYUN_OSS_BUCKET }}/"

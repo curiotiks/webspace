@@ -1,0 +1,18 @@
+- title: Mean Alchemy
+  slug: mean-alchemy
+  url: /projects/mean-alchemy/
+  status: Active
+  timeframe: Ongoing
+  summary: A current project exploring how interactive systems can support assessment, motivation, and student growth.
+- title: Learning Analytics Dashboards & Tools
+  slug: learning-analytics-tools
+  url: /projects/learning-analytics-tools/
+  status: Active
+  timeframe: CHAW, FSU
+  summary: Dashboards and utility tools for educational data workflows and research use.
+- title: Physics Playground Analytics
+  slug: physics-playground-analytics
+  url: /projects/physics-playground-analytics/
+  status: Archived
+  timeframe: 2020–2022
+  summary: Analytics work centered on the Physics Playground game-based learning environment.

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description | escape }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="site-brand">
+        <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <p>{{ site.description }}</p>
+      </div>
+      {% include site-nav.html %}
+    </header>
+
+    <main id="content" class="site-content">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <p>{{ site.title }} · <a href="mailto:cfulwider@fsu.edu">cfulwider@fsu.edu</a> · <a href="mailto:curiotiks@icloud.com">curiotiks@icloud.com</a></p>
+    </footer>
+  </body>
+</html>

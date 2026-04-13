@@ -1,11 +1,20 @@
-## List of random projects I needed a place to host online
+# Personal site
 
-### PP Analysis
-* [Elo Justification](/PP_Analysis/elojust.html)
+This repo is the ground truth for my personal site.
 
-### Course Work
-* [Self-efficacy Presentation](/SelfEfficacyPresentation.html)
-* [Results from Self-efficacy Project](https://github.com/curiotiks/webspace/blob/main/self-efficacy/se_ecd_eda.ipynb)
+## Pages
 
-### oGame Projects
-* [Cargo Ship Calculator](/oGameCalculator/index.html)
+- Home: `index.md`
+- Who I am: `about.md`
+- Projects: `projects/index.md`
+- Contact: `contact.md`
+- Legacy pages (older hosted artifacts): `legacy/index.md`
+
+## China-friendly mirror (optional)
+
+See `MIRRORING.md` for options and GitHub Actions secrets to automatically publish a mirror that’s more reachable from mainland China.
+
+## Local preview
+
+- Ruby/Bundler: use a non-system Ruby (recommended: Homebrew Ruby), then run `bin/dev` and open `http://127.0.0.1:4000`
+- Docker (recommended for live reload): `bin/dev-docker` then open `http://127.0.0.1:4000`
