@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout title={project.title} description={project.summary}>
+  <div class="page-container">
+    <h1>{project.title}</h1>
+
+    <section>
+      <h2>Status</h2>
+      <div class="info-card">
+        <div class="chip-list">
+          <span class="tag">{project.status}</span>
+          <span class="tag">{project.timeframe}</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Overview</h2>
+      <div class="content-card">
+        <p>{project.body}</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Focus</h2>
+      <ul class="chip-list">
+        {project.focus.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    <section>
+      <div class="button-row">
+        <a class="button-secondary" href={`${import.meta.env.BASE_URL}projects/`}>Back to projects</a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

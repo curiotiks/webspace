@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+import portraitImage from '../assets/portrait.jpg';
+import '../styles/about.css';
+---
+
+<BaseLayout title="About" description="Background, training, and research areas.">
+  <div class="page-container">
+    <h1>About me</h1>
+
+    <div class="about-content">
+      <div class="about-intro-wrapper">
+        <div class="about-header">
+          <Image src={portraitImage} alt={profile.name} class="about-portrait" />
+          <h2 class="about-name">{profile.name}</h2>
+        </div>
+
+        <p class="intro-text">
+          {profile.researchStatement}
+        </p>
+      </div>
+
+      <section>
+        <h2>Research Specialisations</h2>
+        <ul class="chip-list">
+          {profile.focus.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Professional Orientation</h2>
+        <div class="info-card">
+          <ul class="simple-list">
+            {profile.roles.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <ul class="education-list icon-list">
+          {
+            profile.education.map((item) => (
+              <li>
+                <div class="education-entry">
+                  <h3>{item.degree}</h3>
+                  <p class="institution">{item.institution}, {item.location}</p>
+                  <p class="grade">{item.year} · {item.note}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

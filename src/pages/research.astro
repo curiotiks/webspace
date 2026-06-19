@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+import '../styles/about.css';
+---
+
+<BaseLayout title="Research" description="Research themes and areas of study.">
+  <div class="page-container">
+    <h1>Research</h1>
+
+    <section>
+      <h2>Research Statement</h2>
+      <div class="info-card">
+        <p>{profile.researchStatement}</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Research Areas</h2>
+      <ul class="chip-list">
+        {profile.focus.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Selected Experience</h2>
+      <ul class="work-list icon-list">
+        {
+          profile.researchExperience.map((item) => (
+            <li>
+              <div class="list-entry">
+                <h3>{item.title}</h3>
+                <p class="institution">{item.org} · {item.dates}</p>
+                <p>{item.context}</p>
+                <ul class="simple-list" style="margin-top: 0.75rem;">
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

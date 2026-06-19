@@ -1,0 +1,13 @@
+{
+  "name": "webspace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^6.1.9"
+  }
+}

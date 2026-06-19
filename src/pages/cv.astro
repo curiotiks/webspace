@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+import '../styles/about.css';
+---
+
+<BaseLayout title="CV" description="Academic background, research focus, and professional profile.">
+  <div class="page-container">
+    <h1>Curriculum vitae</h1>
+
+    <section>
+      <h2>Profile</h2>
+      <div class="info-card">
+        <ul class="simple-list">
+          {profile.cvHighlights.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Download</h2>
+      <div class="button-row">
+        <a class="button-primary" href={profile.pdfPath}>Download PDF CV</a>
+        <a class="button-secondary" href={profile.pdfSourcePath}>View LaTeX Source</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <ul class="education-list icon-list">
+        {
+          profile.education.map((item) => (
+            <li>
+              <div class="education-entry">
+                <h3>{item.degree}</h3>
+                <p class="institution">{item.institution}, {item.location}</p>
+                <p class="grade">{item.year} · {item.note}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section>
+      <h2>Research Experience</h2>
+      <ul class="work-list icon-list">
+        {
+          profile.researchExperience.map((item) => (
+            <li>
+              <div class="list-entry">
+                <h3>{item.title}</h3>
+                <p class="institution">{item.org} · {item.dates}</p>
+                <p>{item.context}</p>
+                <ul class="simple-list" style="margin-top: 0.75rem;">
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section>
+      <h2>Teaching</h2>
+      <ul class="work-list icon-list">
+        {
+          profile.teaching.map((item) => (
+            <li>
+              <div class="list-entry">
+                <h3>{item.title}</h3>
+                <p class="institution">{item.org} · {item.dates}</p>
+                <ul class="simple-list" style="margin-top: 0.75rem;">
+                  {item.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section>
+      <h2>Service & Awards</h2>
+      <div class="split-grid">
+        <div class="info-card">
+          <h3 style="margin-bottom: 0.75rem;">University</h3>
+          <ul class="simple-list">
+            {profile.service.university.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3 style="margin-bottom: 0.75rem;">Reviewing</h3>
+          <ul class="simple-list">
+            {profile.service.reviewing.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+      <div class="info-card" style="margin-top: 1rem;">
+        <h3 style="margin-bottom: 0.75rem;">Awards</h3>
+        <ul class="simple-list">
+          {profile.service.awards.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Manuscripts in Progress</h2>
+      <div class="info-card">
+        <ul class="simple-list">
+          {profile.manuscripts.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

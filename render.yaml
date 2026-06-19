@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: curtfulwider-site
+    runtime: static
+    buildCommand: ASTRO_TELEMETRY_DISABLED=1 npm install && npm run build
+    staticPublishPath: dist
+    pullRequestPreviewsEnabled: true

@@ -1,20 +1,33 @@
 # Personal site
 
-This repo is the ground truth for my personal site.
+This repo is the source of truth for `curtfulwider.com`.
 
-## Pages
+It now uses **Astro** as a small static-site framework instead of Jekyll. That is a better fit here: fast builds, simple content structure, clean static output, and straightforward deployment to Render while keeping GitHub as the canonical repo.
 
-- Home: `index.md`
-- Who I am: `about.md`
-- Projects: `projects/index.md`
-- Contact: `contact.md`
-- Legacy pages (older hosted artifacts): `legacy/index.md`
+## Stack
 
-## China-friendly mirror (optional)
+- Astro static site
+- GitHub for source control
+- Render static site for production deploys
+- Optional GitHub Actions build check on push and pull request
 
-See `MIRRORING.md` for options and GitHub Actions secrets to automatically publish a mirror that’s more reachable from mainland China.
+## Local development
 
-## Local preview
+1. `npm install`
+2. `npm run dev`
+3. Open `http://localhost:4321`
 
-- Ruby/Bundler: use a non-system Ruby (recommended: Homebrew Ruby), then run `bin/dev` and open `http://127.0.0.1:4000`
-- Docker (recommended for live reload): `bin/dev-docker` then open `http://127.0.0.1:4000`
+## Deploying to Render
+
+You do **not** need to wire up a separate manual webhook if the site is connected directly to the GitHub repo in Render.
+
+Use these settings:
+
+- Build command: `npm install && npm run build`
+- Publish directory: `dist`
+
+Once the repo is connected, Render will auto-deploy on pushes to `main`. The included [render.yaml](/Users/curtfulwider/github.nosync/webspace/render.yaml) can be used as the baseline config.
+
+## Previous setup
+
+The old Jekyll and GitHub Pages files were removed to keep the repo focused on the current deployment path.
