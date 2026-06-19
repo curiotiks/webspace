@@ -2,8 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import { SITE_DATA } from '../constants';
+import { PROFILE } from '../data/profile';
 
 import '../styles/home.css';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout pageTitle="">
@@ -12,7 +15,22 @@ import '../styles/home.css';
 		tagline={SITE_DATA.tagline} 
 		twitter={SITE_DATA.twitter}
 		linkedin={SITE_DATA.linkedin}
+		github={SITE_DATA.github}
 		scholar={SITE_DATA.scholar}
+		orcid={SITE_DATA.orcid}
 		email={SITE_DATA.email}
 	/>
+
+	<section class="home-overview">
+		<p>{PROFILE.intro}</p>
+		<p>{PROFILE.homeSummary}</p>
+		<p>{PROFILE.homeSecondary}</p>
+
+		<ul class="home-links">
+			<li><a href={`${base}about/`}>About</a></li>
+			<li><a href={`${base}publications/`}>Publications</a></li>
+			<li><a href={`${base}presentations/`}>Presentations</a></li>
+			<li><a href={`${base}contact/`}>Contact</a></li>
+		</ul>
+	</section>
 </Layout>

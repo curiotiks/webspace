@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE_DATA } from '../constants';
 import publicationsData from '../data/publications.json';
 
 import '../styles/publications.css';
+
+const base = import.meta.env.BASE_URL;
 
 // Extract years for filters
 const years = [...new Set(publicationsData.map(pub => pub.year))].sort((a, b) => b - a);
@@ -20,18 +21,21 @@ const publicationTypes = [...new Set(publicationsData.map(pub => pub.publication
 
         <div class="info-card">
             <p>
-                For an up-to-date list of my peer-reviewed publications and preprints, see:
+                This page mirrors the research outputs currently listed in my CV, including journal articles,
+                book chapters, conference papers, and poster presentations.
             </p>
-            <a href={`https://scholar.google.com/citations?user=${SITE_DATA.scholar}`}
+            <a href={`${base}files/cv.pdf`}
                class="info-card-link"
                target="_blank"
                rel="noopener noreferrer"
-               aria-label="Visit Google Scholar profile">
+               aria-label="Download CV PDF">
                 <svg viewBox="0 0 24 24" width="60" height="60" fill="currentColor">
-                    <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z"></path>
-                    <path d="M19 11v6c0 1.66-3.13 3-7 3s-7-1.34-7-3v-6l7 3 7-3z"></path>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <path d="M14 2v6h6"></path>
+                    <path d="M8 13h8"></path>
+                    <path d="M8 17h5"></path>
                 </svg>
-                <span>Google Scholar</span>
+                <span>CV PDF</span>
             </a>
         </div>
 
@@ -129,9 +133,13 @@ const publicationTypes = [...new Set(publicationsData.map(pub => pub.publication
                         <div class="pub-number">{index + 1}</div>
                         <div class="pub-content">
                             <h3 class="pub-title">
-                                <a href={pub.link} target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
-                                    {pub.title}
-                                </a>
+                                {pub.link ? (
+                                    <a href={pub.link} target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+                                        {pub.title}
+                                    </a>
+                                ) : (
+                                    pub.title
+                                )}
                             </h3>
                             <p class="pub-authors">{pub.authors}</p>
                             <div class="pub-meta">

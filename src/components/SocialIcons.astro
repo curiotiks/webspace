@@ -11,6 +11,7 @@ interface Props {
   linkedin?: string;
   github?: string;
   scholar?: string;
+  orcid?: string;
   email?: string;
 }
 
@@ -24,6 +25,7 @@ const {
   linkedin = SITE_DATA.linkedin,
   github = SITE_DATA.github,
   scholar = SITE_DATA.scholar,
+  orcid = SITE_DATA.orcid,
   email = SITE_DATA.email
 } = Astro.props;
 ---
@@ -69,6 +71,13 @@ const {
       <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor">
         <path d="M12 2L1 7l11 5 9-4.09V17h2V7L12 2z"></path>
         <path d="M19 11v6c0 1.66-3.13 3-7 3s-7-1.34-7-3v-6l7 3 7-3z"></path>
+      </svg>
+    </a>
+  )}
+  {orcid && (
+    <a href={`https://orcid.org/${orcid}`} aria-label="ORCID" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width={size} height={size} fill="currentColor">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0Zm-4.377 6.75a1.123 1.123 0 1 1 0 2.246 1.123 1.123 0 0 1 0-2.246Zm1.004 10.5H6.62v-7.5h2.007v7.5Zm7.306 0h-2.554l-3.203-5.012v5.012H8.07v-7.5h2.606l3.151 4.923V9.75h2.106v7.5Zm-2.093-11.25c-2.347 0-4.251 1.903-4.251 4.25s1.904 4.25 4.251 4.25a4.25 4.25 0 1 0 0-8.5Zm0 6.5c-1.242 0-2.25-1.007-2.25-2.25S12.598 8 13.84 8s2.25 1.007 2.25 2.25-1.008 2.25-2.25 2.25Z"></path>
       </svg>
     </a>
   )}

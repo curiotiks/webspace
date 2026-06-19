@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import SocialIcons from './SocialIcons.astro';
-import portraitImage from '../assets/portrait.png';
-const { name, tagline, twitter, linkedin, scholar, email } = Astro.props;
+import portraitImage from '../assets/portrait/IMG_0909.JPG';
+const { name, tagline, twitter, linkedin, github, scholar, orcid, email } = Astro.props;
 ---
 
 <section class="hero">
@@ -18,7 +18,9 @@ const { name, tagline, twitter, linkedin, scholar, email } = Astro.props;
         gap=1.5
         twitter={twitter} 
         linkedin={linkedin} 
+        github={github}
         scholar={scholar} 
+        orcid={orcid}
         email={email} 
       />
     </div>

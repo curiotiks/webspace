@@ -33,6 +33,7 @@
     height: 450px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: 68% 35%;
     box-shadow: 0px 0px 20px 10px rgba(59, 59, 59, 0.2);
 }
 
@@ -58,6 +59,28 @@
     font-weight: 200;
 }
 
+.home-overview {
+    max-width: 760px;
+    margin: 0 auto 4rem auto;
+}
+
+.home-overview p {
+    margin-bottom: 1.25rem;
+}
+
+.home-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+}
+
+.home-links li {
+    margin: 0;
+}
+
 @media (max-width: 960px) {
     .hero-content {
         flex-direction: column;
@@ -78,6 +101,10 @@
     .tagline {
         font-size: 1.1rem;
         margin-bottom: 2rem;
+    }
+
+    .home-overview {
+        margin-bottom: 2.5rem;
     }
 
     .portrait {

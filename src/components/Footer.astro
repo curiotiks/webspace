@@ -1,11 +1,13 @@
 ---
 import { SITE_DATA } from '../constants';
 import SocialIcons from './SocialIcons.astro';
+
+const year = new Date().getFullYear();
 ---
 
 <div class="footer-container">
 	<div class="footer-content">
-		<div class="copyright">&copy; 2026 whydevils</div>
+		<div class="copyright">&copy; {year} {SITE_DATA.name}</div>
 		<SocialIcons size={18} gap="1.0rem" class="footer-socials" />
 	</div>
 </div>

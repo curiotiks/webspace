@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_DATA } from '../constants';
+import { CONTACT } from '../data/profile';
+---
+
+<Layout pageTitle="Contact">
+    <div class="page-container">
+        <h1>Contact</h1>
+
+        <p class="intro-text">
+            The cleanest way to reach me is by email. I keep the address off the visible page text to reduce
+            scraping, but the button below will open a message to my general inbox.
+        </p>
+
+        <div class="info-card">
+            <p>
+                Use this for research, teaching, collaboration, and consulting enquiries.
+            </p>
+            <a
+                id="contact-email-link"
+                class="info-card-link"
+                data-user={CONTACT.personalEmail.user}
+                data-domain={CONTACT.personalEmail.domain}
+                href="#"
+                aria-label="Send email"
+            >
+                <svg viewBox="0 0 24 24" width="60" height="60" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+                </svg>
+                <span>Email</span>
+            </a>
+        </div>
+
+        <section>
+            <h2>Other Profiles</h2>
+            <p>
+                For code and project work, see
+                <a href={`https://github.com/${SITE_DATA.github}`} target="_blank" rel="noopener noreferrer"> GitHub</a>.
+                For academic profile metadata, see
+                <a href={`https://orcid.org/${SITE_DATA.orcid}`} target="_blank" rel="noopener noreferrer"> ORCID</a>.
+            </p>
+        </section>
+    </div>
+</Layout>
+
+<script>
+    const emailLink = document.getElementById('contact-email-link');
+
+    if (emailLink) {
+        const user = emailLink.getAttribute('data-user');
+        const domain = emailLink.getAttribute('data-domain');
+
+        if (user && domain) {
+            emailLink.setAttribute('href', `mailto:${user}@${domain}`);
+        }
+    }
+</script>
