@@ -16,6 +16,16 @@
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
+  padding: 2rem;
+  border-radius: 28px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-bg-alt) 82%, white) 0%, var(--color-bg) 100%);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .hero-content {
+  background: linear-gradient(135deg, rgba(35, 35, 35, 0.98) 0%, rgba(24, 24, 24, 0.98) 100%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
 }
 
 .portrait-container {
@@ -29,7 +39,8 @@
   height: 420px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0px 0px 20px 10px rgba(59, 59, 59, 0.2);
+  border: 6px solid color-mix(in srgb, var(--color-accent) 12%, var(--color-bg));
+  box-shadow: 0px 12px 36px rgba(59, 59, 59, 0.22);
 }
 
 .hero-text {

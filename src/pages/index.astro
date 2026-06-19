@@ -11,7 +11,11 @@ import '../styles/home.css';
 
   <div class="home-sections">
     <section class="page-container">
+      <div class="page-banner">
+        This site is organized around research, a public-facing CV, active project pages, and a private consulting route that can be revealed later.
+      </div>
       <h2>Overview</h2>
+      <p class="section-intro">A compact academic website with routes for the work that matters most.</p>
       <div class="card-grid">
         <article>
           <h3>Research</h3>
@@ -33,6 +37,7 @@ import '../styles/home.css';
 
     <section class="page-container">
       <h2>Current Work</h2>
+      <p class="section-intro">Applied analytics, assessment design, and practical tools for educators and researchers.</p>
       <div class="content-card">
         <p>{profile.summary}</p>
         <ul class="chip-list" style="margin-top: 1rem;">
@@ -43,6 +48,7 @@ import '../styles/home.css';
 
     <section class="page-container">
       <h2>Selected Projects</h2>
+      <p class="section-intro">Each project has a status, summary, and its own route.</p>
       <div class="card-grid">
         {projects.map((project) => (
           <article class="project-card">

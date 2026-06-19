@@ -20,6 +20,9 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   background-color: var(--color-bg);
+  background-image:
+    radial-gradient(circle at top left, color-mix(in oklch, var(--color-accent-base) 10%, transparent) 0%, transparent 26%),
+    radial-gradient(circle at bottom right, color-mix(in oklch, var(--color-accent-base) 12%, transparent) 0%, transparent 24%);
   overflow-x: hidden;
   overflow-wrap: break-word;
 }
@@ -119,9 +122,14 @@ p a,
 }
 
 header {
-  background-color: var(--color-bg);
-  border-bottom: 1px solid var(--color-border);
+  background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 40;
 }
 
 nav {
@@ -296,11 +304,17 @@ main {
 .nav-inline a {
   font-size: 0.95rem;
   color: var(--color-text-muted);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .nav-inline a[aria-current="page"] {
   color: var(--color-primary);
   font-weight: 600;
+  background: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg));
 }
 
 @media (min-width: 860px) {
@@ -309,8 +323,36 @@ main {
   }
 }
 
+@media (hover: hover) {
+  .nav-inline a:hover {
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+  }
+}
+
 .page-container {
   width: 100%;
+}
+
+.page-lead {
+  font-size: 1.08rem;
+  color: var(--color-text-muted);
+  max-width: 52rem;
+  margin-top: -0.75rem;
+}
+
+.section-intro {
+  margin-bottom: 1rem;
+  color: var(--color-text-muted);
+}
+
+.page-banner {
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--color-accent);
+  border-radius: 0 12px 12px 0;
+  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-bg-alt));
+  color: var(--color-text-muted);
 }
 
 .content-card,
@@ -318,10 +360,20 @@ main {
 .card-grid article,
 .project-card,
 .contact-card {
-  background: var(--color-bg-alt);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-bg-alt) 88%, white) 0%, var(--color-bg-alt) 100%);
   border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 1.25rem;
+  border-radius: 16px;
+  padding: 1.4rem;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .content-card,
+[data-theme="dark"] .info-card,
+[data-theme="dark"] .card-grid article,
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .contact-card {
+  background: linear-gradient(180deg, rgba(36, 36, 36, 0.98) 0%, rgba(30, 30, 30, 0.98) 100%);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
 }
 
 .info-card p,
@@ -351,6 +403,11 @@ main {
   font-size: 0.9rem;
 }
 
+[data-theme="dark"] .chip-list li,
+[data-theme="dark"] .tag {
+  background: #222;
+}
+
 .button-row,
 .actions-row {
   display: flex;
@@ -364,24 +421,37 @@ main {
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1rem;
-  border-radius: 10px;
+  border-radius: 999px;
   border: 1px solid var(--color-border);
   font-weight: 600;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
 }
 
 .button-primary {
-  background: var(--color-primary);
-  color: var(--color-bg);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
 }
 
 [data-theme="dark"] .button-primary {
-  background: var(--color-primary);
   color: #181818;
 }
 
 .button-secondary {
   background: var(--color-bg-alt);
   color: var(--color-primary);
+}
+
+@media (hover: hover) {
+  .button-primary:hover,
+  .button-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .muted {
@@ -401,6 +471,10 @@ main {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.project-card h3 {
+  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 960px) {
@@ -458,4 +532,11 @@ main {
   background: var(--color-bg);
   color: var(--color-text);
   font: inherit;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 18%, transparent);
 }
