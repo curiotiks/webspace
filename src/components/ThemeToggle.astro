@@ -22,13 +22,13 @@
     const element = document.documentElement;
     const isDark = element.getAttribute('data-theme') === 'dark';
     const newTheme = isDark ? 'light' : 'dark';
-
+    
     if (newTheme === 'light') {
       element.removeAttribute('data-theme');
     } else {
       element.setAttribute('data-theme', 'dark');
     }
-
+    
     localStorage.setItem('theme', newTheme);
   };
 

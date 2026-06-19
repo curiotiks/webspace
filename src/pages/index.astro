@@ -1,66 +1,18 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { profile } from '../data/profile';
-import { projects } from '../data/projects';
+import { SITE_DATA } from '../constants';
+
 import '../styles/home.css';
 ---
 
-<BaseLayout title="" description={profile.tagline}>
-  <Hero name={profile.name} tagline={profile.tagline} summary={profile.intro} />
-
-  <div class="home-sections">
-    <section class="page-container">
-      <div class="page-banner">
-        This site is organized around research, a public-facing CV, active project pages, and a private consulting route that can be revealed later.
-      </div>
-      <h2>Overview</h2>
-      <p class="section-intro">A compact academic website with routes for the work that matters most.</p>
-      <div class="card-grid">
-        <article>
-          <h3>Research</h3>
-          <p>Learning sciences, educational data analysis, telemetry, AI-supported assessment, and evidence-centered design.</p>
-          <p class="extra-links"><a href={`${import.meta.env.BASE_URL}research/`}>View research</a></p>
-        </article>
-        <article>
-          <h3>CV</h3>
-          <p>Education, research experience, teaching, service, awards, manuscripts, and downloadable source documents.</p>
-          <p class="extra-links"><a href={`${import.meta.env.BASE_URL}cv/`}>View CV</a></p>
-        </article>
-        <article>
-          <h3>Projects</h3>
-          <p>Active and archival project pages covering assessment systems, dashboards, and gameplay analytics work.</p>
-          <p class="extra-links"><a href={`${import.meta.env.BASE_URL}projects/`}>Browse projects</a></p>
-        </article>
-      </div>
-    </section>
-
-    <section class="page-container">
-      <h2>Current Work</h2>
-      <p class="section-intro">Applied analytics, assessment design, and practical tools for educators and researchers.</p>
-      <div class="content-card">
-        <p>{profile.summary}</p>
-        <ul class="chip-list" style="margin-top: 1rem;">
-          {profile.roles.map((item) => <li>{item}</li>)}
-        </ul>
-      </div>
-    </section>
-
-    <section class="page-container">
-      <h2>Selected Projects</h2>
-      <p class="section-intro">Each project has a status, summary, and its own route.</p>
-      <div class="card-grid">
-        {projects.map((project) => (
-          <article class="project-card">
-            <h3><a href={`${import.meta.env.BASE_URL}projects/${project.slug}/`}>{project.title}</a></h3>
-            <p style="margin: 0.4rem 0 0.75rem 0;">{project.summary}</p>
-            <div class="chip-list">
-              <span class="tag">{project.status}</span>
-              <span class="tag">{project.timeframe}</span>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  </div>
-</BaseLayout>
+<Layout pageTitle="">
+	<Hero 
+		name={SITE_DATA.name} 
+		tagline={SITE_DATA.tagline} 
+		twitter={SITE_DATA.twitter}
+		linkedin={SITE_DATA.linkedin}
+		scholar={SITE_DATA.scholar}
+		email={SITE_DATA.email}
+	/>
+</Layout>
