@@ -41,6 +41,8 @@ Use for downloadable documents and non-image assets.
 
 - `public/files/cv/`
   - CV PDFs and source files
+- `public/files/dissertation/`
+  - Dissertation PDFs and related written materials
 - `public/files/slides/`
   - Slide decks and presentation exports
 - `public/files/posters/`
@@ -50,9 +52,21 @@ Use for downloadable documents and non-image assets.
 - `public/files/datasets/`
   - Public datasets or supplementary files
 
+## `public/media/`
+
+Use for static audio and video files referenced directly by URL.
+
+- `public/media/dissertation/`
+  - Dissertation defense or presentation recordings
+
+Use these when you want paths like:
+
+- `/media/dissertation/defense-recording.mp4`
+
 Use these when you want links like:
 
 - `/files/cv/cv.pdf`
+- `/files/dissertation/dissertation.pdf`
 - `/files/slides/talk-name.pdf`
 
 ## Rule of thumb

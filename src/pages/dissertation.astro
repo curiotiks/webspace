@@ -1,0 +1,148 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Layout from '../layouts/Layout.astro';
+
+import '../styles/dissertation.css';
+
+const base = import.meta.env.BASE_URL;
+
+const dissertationTitle = 'Game-Based Assessment and Self-Efficacy Modeling in Interactive Learning Environments';
+const dissertationSummary = 'A dissertation-focused page for the full written document and the recorded defense or presentation.';
+
+const publicRoot = path.join(process.cwd(), 'public');
+const documentDir = path.join(publicRoot, 'files', 'dissertation');
+const videoDir = path.join(publicRoot, 'media', 'dissertation');
+
+const findFirstFile = (dir: string, extensions: string[]) => {
+    if (!fs.existsSync(dir)) return null;
+
+    return fs.readdirSync(dir).find((file) => {
+        const ext = path.extname(file).toLowerCase();
+        return extensions.includes(ext);
+    }) ?? null;
+};
+
+const dissertationPdf = findFirstFile(documentDir, ['.pdf']);
+const recordingVideo = findFirstFile(videoDir, ['.mp4', '.webm', '.mov', '.m4v']);
+
+const pdfUrl = dissertationPdf ? `${base}files/dissertation/${encodeURIComponent(dissertationPdf)}` : null;
+const videoUrl = recordingVideo ? `${base}media/dissertation/${encodeURIComponent(recordingVideo)}` : null;
+
+const videoMimeTypes: Record<string, string> = {
+    '.mp4': 'video/mp4',
+    '.webm': 'video/webm',
+    '.mov': 'video/quicktime',
+    '.m4v': 'video/x-m4v',
+};
+
+const videoMimeType = recordingVideo ? videoMimeTypes[path.extname(recordingVideo).toLowerCase()] : null;
+---
+
+<Layout pageTitle="Dissertation">
+    <div class="page-container">
+        <h1>Dissertation</h1>
+
+        <p class="intro-text">
+            {dissertationSummary}
+        </p>
+
+        <section>
+            <h2>Project</h2>
+            <p>
+                <strong>{dissertationTitle}</strong>
+            </p>
+            <p>
+                This page is set up to display the full dissertation and host the defense or presentation recording
+                once those files are added to the repository.
+            </p>
+            <ul class="custom-list">
+                <li>
+                    <span class="list-item-title">Document folder.</span>{' '}
+                    <span class="list-item-description"><code>public/files/dissertation/</code></span>
+                </li>
+                <li>
+                    <span class="list-item-title">Video folder.</span>{' '}
+                    <span class="list-item-description"><code>public/media/dissertation/</code></span>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Full Document</h2>
+
+            {pdfUrl ? (
+                <>
+                    <div class="dissertation-actions">
+                        <a
+                            href={pdfUrl}
+                            class="dissertation-action-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Open PDF
+                        </a>
+                        <a
+                            href={pdfUrl}
+                            class="dissertation-action-link"
+                            download
+                        >
+                            Download PDF
+                        </a>
+                    </div>
+
+                    <iframe
+                        src={pdfUrl}
+                        title="Dissertation PDF"
+                        class="dissertation-document"
+                    ></iframe>
+                </>
+            ) : (
+                <div class="info-card dissertation-placeholder">
+                    <p>
+                        No dissertation PDF is in place yet.
+                    </p>
+                    <p class="placeholder-note">
+                        Add the file to <code>public/files/dissertation/</code>. The page will automatically embed the
+                        first PDF it finds there.
+                    </p>
+                </div>
+            )}
+        </section>
+
+        <section>
+            <h2>Video Recording</h2>
+
+            {videoUrl && videoMimeType ? (
+                <>
+                    <div class="dissertation-actions">
+                        <a
+                            href={videoUrl}
+                            class="dissertation-action-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Open Recording
+                        </a>
+                    </div>
+
+                    <video controls preload="metadata" class="dissertation-video">
+                        <source src={videoUrl} type={videoMimeType} />
+                        Your browser does not support the embedded video player.
+                    </video>
+                </>
+            ) : (
+                <div class="info-card dissertation-placeholder">
+                    <p>
+                        No dissertation recording is in place yet.
+                    </p>
+                    <p class="placeholder-note">
+                        Add an <code>.mp4</code>, <code>.webm</code>, <code>.mov</code>, or <code>.m4v</code> file to
+                        <code> public/media/dissertation/</code>. The page will automatically use the first supported
+                        video it finds.
+                    </p>
+                </div>
+            )}
+        </section>
+    </div>
+</Layout>
