@@ -1,231 +1,50 @@
 ---
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import { SITE_DATA } from '../constants';
 import portraitImage from '../assets/portrait/IMG_0909.JPG';
-import {
-    AWARDS,
-    EDUCATION,
-    PROFILE,
-    RESEARCH_AREAS,
-    RESEARCH_EXPERIENCE,
-    RESEARCH_QUESTIONS,
-    SELECTED_PROJECTS,
-    SERVICE,
-    TECHNICAL_SKILLS,
-    TEACHING_EXPERIENCE,
-} from '../data/profile';
+import chinaImage from '../assets/site/DSC03689.JPG';
+import landscapeImage from '../assets/site/IMG_0037.JPG';
+import skyImage from '../assets/site/IMG_5393.jpeg';
+import { ABOUT_SECTIONS, CURRENT_GOALS, PROFILE, RESEARCH_AREAS } from '../data/profile';
 
 import '../styles/about.css';
-
-const base = import.meta.env.BASE_URL;
 ---
 
-<Layout pageTitle="About">
-    <div class="page-container">
-        <h1>About</h1>
-
-        <div class="about-content">
-            <div class="about-intro-wrapper centered-column">
-                <div class="about-header centered-column">
-                    <Image src={portraitImage} alt={SITE_DATA.name} class="about-portrait" />
-                    <h2 class="about-name">{SITE_DATA.name}</h2>
-                </div>
-
-                <div>
-                    <p class="intro-text">{PROFILE.intro}</p>
-                    <p>
-                        I am interested in what can be learned from learner behavior, how growth can be measured more
-                        meaningfully, and how assessment and instructional systems can become more useful for both
-                        students and educators. My work combines research design with implementation, so the output is
-                        not just a paper or model but a working tool, pipeline, or interface that can actually be used.
-                    </p>
-                    <p>
-                        Teaching keeps that work grounded. I currently teach introductory statistics at Tallahassee
-                        State College and have previously taught at Zhejiang Normal University in Jinhua, China. Those
-                        roles have reinforced my interest in clear instruction, careful course design, and systems that
-                        meet learners where they are without lowering the bar.
-                    </p>
-                </div>
-            </div>
-
-            <section>
-                <h2>Research Questions</h2>
-                <ul class="custom-list">
-                    {RESEARCH_QUESTIONS.map((question) => (
-                        <li>
-                            <span class="list-item-description">{question}</span>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section>
-                <h2>Research Areas</h2>
-                <ul class="custom-list">
-                    {RESEARCH_AREAS.map((area) => (
-                        <li>
-                            <span class="list-item-description">{area}</span>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section>
-                <h2>Research Experience</h2>
-                <ul class="work-list icon-list">
-                    {RESEARCH_EXPERIENCE.map((entry) => (
-                        <li>
-                            <div class="list-entry">
-                                <h3>{entry.title}</h3>
-                                <p class="institution">{entry.institution}, {entry.dates}</p>
-                                {entry.detail && <p>{entry.detail}</p>}
-                                {entry.note && <p class="grade">{entry.note}</p>}
-                                {entry.bullets.length > 0 && (
-                                    <ul class="entry-bullets">
-                                        {entry.bullets.map((bullet) => <li>{bullet}</li>)}
-                                    </ul>
-                                )}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section>
-                <h2>Selected Projects</h2>
-                <ul class="work-list icon-list">
-                    {SELECTED_PROJECTS.map((entry) => (
-                        <li>
-                            <div class="list-entry">
-                                <h3>{entry.title}</h3>
-                                <p class="institution">{entry.institution}, {entry.dates}</p>
-                                {entry.note && <p class="grade">{entry.note}</p>}
-                                <ul class="entry-bullets">
-                                    {entry.bullets.map((bullet) => <li>{bullet}</li>)}
-                                </ul>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section>
-                <h2>Teaching Experience</h2>
-                <ul class="work-list icon-list">
-                    {TEACHING_EXPERIENCE.map((entry) => (
-                        <li>
-                            <div class="list-entry">
-                                <h3>{entry.title}</h3>
-                                <p class="institution">{entry.institution}, {entry.dates}</p>
-                                {entry.detail && <p>{entry.detail}</p>}
-                                {entry.note && <p class="grade">{entry.note}</p>}
-                                {entry.bullets.length > 0 && (
-                                    <ul class="entry-bullets">
-                                        {entry.bullets.map((bullet) => <li>{bullet}</li>)}
-                                    </ul>
-                                )}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section>
-                <h2>Education</h2>
-                <ul class="education-list icon-list">
-                    {EDUCATION.map((entry) => (
-                        <li>
-                            <div class="education-entry">
-                                <h3>{entry.title}</h3>
-                                <p class="institution">{entry.institution}, {entry.dates}</p>
-                                <p class="grade">{entry.note}</p>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section>
-                <h2>Technical Skills</h2>
-                <ul class="custom-list">
-                    {TECHNICAL_SKILLS.map((skill) => (
-                        <li>
-                            <span class="list-item-title">{skill.label}.</span>{" "}
-                            <span class="list-item-description">{skill.content}</span>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section>
-                <h2>Service</h2>
-                <ul class="custom-list">
-                    <li>
-                        <span class="list-item-title">Reviewing.</span>{" "}
-                        <span class="list-item-description">{SERVICE.reviewing.join("; ")}</span>
-                    </li>
-                    <li>
-                        <span class="list-item-title">Other.</span>{" "}
-                        <span class="list-item-description">{SERVICE.other.join("; ")}</span>
-                    </li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Awards</h2>
-                <ul class="distinctions-list icon-list">
-                    {AWARDS.map((award) => (
-                        <li>
-                            <span class="list-item-description">{award}</span>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-
-            <section>
-                <h2>Dissertation</h2>
-                <p>
-                    Dissertation materials, including the full written document and the defense or presentation
-                    recording, live on the
-                    <a href={`${base}dissertation/`}> dissertation page</a>.
-                </p>
-            </section>
-
-            <section>
-                <h2>CV</h2>
-                <div class="info-card">
-                    <p>
-                        Download the current curriculum vitae for the complete record of research, teaching,
-                        publications, and service.
-                    </p>
-                    <a href={`${base}files/cv.pdf`}
-                       class="info-card-link"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Download CV PDF">
-                        <svg viewBox="0 0 24 24" width="60" height="60" fill="currentColor">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <path d="M14 2v6h6"></path>
-                            <path d="M8 13h8"></path>
-                            <path d="M8 17h5"></path>
-                        </svg>
-                        <span>CV PDF</span>
-                    </a>
-                </div>
-            </section>
-
-            <section>
-                <h2>Contact</h2>
-                <p>
-                    For research, teaching, or consulting conversations, use the
-                    <a href={`${base}contact/`}>contact page</a>.
-                    You can also find me on
-                    <a href={`https://github.com/${SITE_DATA.github}`} target="_blank" rel="noopener noreferrer"> GitHub</a>
-                    {" "}and
-                    <a href={`https://orcid.org/${SITE_DATA.orcid}`} target="_blank" rel="noopener noreferrer"> ORCID</a>.
-                </p>
-            </section>
+<Layout pageTitle="About" description={PROFILE.description}>
+    <section class="about-hero">
+        <div>
+            <span class="eyebrow">About</span>
+            <h1>Background and Direction</h1>
+            <p class="page-intro">{PROFILE.intro}</p>
+            <ul class="tag-list">
+                {RESEARCH_AREAS.map((area) => (
+                    <li>{area}</li>
+                ))}
+            </ul>
         </div>
-    </div>
+
+        <Image src={portraitImage} alt="Portrait of G. Curt Fulwider" class="about-portrait" />
+    </section>
+
+    <section class="about-gallery">
+        <Image src={chinaImage} alt="Architectural scene photographed in China" class="gallery-primary" />
+        <Image src={landscapeImage} alt="Landscape photograph" class="gallery-secondary" />
+        <Image src={skyImage} alt="Skyline and lamppost photograph" class="gallery-secondary" />
+    </section>
+
+    {ABOUT_SECTIONS.map((section) => (
+        <section class="about-section">
+            <h2>{section.title}</h2>
+            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </section>
+    ))}
+
+    <section class="about-section">
+        <h2>Current Priorities</h2>
+        <ul class="simple-list">
+            {CURRENT_GOALS.map((goal) => (
+                <li>{goal}</li>
+            ))}
+        </ul>
+    </section>
 </Layout>

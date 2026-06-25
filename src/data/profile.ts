@@ -13,17 +13,6 @@ export const PROFILE = {
   orcid: "0000-0002-1362-1805",
 } as const;
 
-export const CONTACT = {
-  personalEmail: {
-    user: "curiotiks",
-    domain: "icloud.com",
-  },
-  academicEmail: {
-    user: "cfulwider",
-    domain: "fsu.edu",
-  },
-} as const;
-
 export const RESEARCH_QUESTIONS = [
   "Can learning analytics be used to assess students' self-efficacy beliefs without relying on self-report alone?",
   "How does competition in game-based learning affect statistical self-efficacy beliefs?",
@@ -220,3 +209,41 @@ export const SERVICE = {
     "Guest lecturer for a Learning Analytics course at Teachers College, Columbia University",
   ],
 };
+
+export const ABOUT_SECTIONS = [
+  {
+    title: "Early Path, China, and Family",
+    paragraphs: [
+      "My path into this work has moved through teaching, design, and later doctoral study rather than a straight line into academia. Early interests in language, communication, and how people grow into difficult work eventually turned into teaching abroad and a much deeper interest in how learning environments shape confidence.",
+      "Teaching at Zhejiang Normal University in Jinhua made those questions more concrete. Returning to graduate school at Florida State University gave me the research language and methodological tools to study them more seriously. Family life, including raising kids while finishing graduate training, keeps that work grounded in usefulness rather than abstraction.",
+    ],
+  },
+  {
+    title: "How the Work Has Evolved",
+    paragraphs: [
+      "I began from instructional design and classroom teaching, but my interests kept moving toward the traces learners leave behind in digital systems. That shift led me into game-based assessment, stealth assessment, learning analytics, self-efficacy research, and the design of tools that turn behavior into interpretable evidence.",
+      "More recently, that same line of work has expanded toward AI-assisted measurement design, responsible uses of large language models, and interactive systems that help educators act on data rather than just collect it.",
+    ],
+  },
+  {
+    title: "Where the Work Is Headed",
+    paragraphs: [
+      "Right now I am most interested in building reusable research and assessment platforms instead of one-off studies. That means stronger telemetry pipelines, better evidence models, and interfaces that make results understandable to teachers, researchers, and institutional partners.",
+      "Longer term, I want to connect research, teaching, and applied consulting in ways that bridge learning sciences, educational data science, and international collaboration, especially in work connected to China and cross-cultural education.",
+    ],
+  },
+] as const;
+
+export const CURRENT_GOALS = [
+  "Finish and extend dissertation work on game-based assessment and self-efficacy modeling.",
+  "Build research tools that combine theory, telemetry, and AI without losing interpretability.",
+  "Connect academic research with practical consulting, teaching, and institutional improvement work.",
+] as const;
+
+export const DISSERTATION = {
+  title: "Game-Based Assessment and Self-Efficacy Modeling in Interactive Learning Environments",
+  summary:
+    "Full dissertation materials, defense slides, and the presentation recording live here in one place.",
+  supplementalNote:
+    "Supplemental materials will continue to be added here as they are cleaned up and prepared for public release.",
+} as const;

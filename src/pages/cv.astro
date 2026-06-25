@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import publicationsData from '../data/publications.json';
+import {
+    AWARDS,
+    EDUCATION,
+    RESEARCH_AREAS,
+    RESEARCH_EXPERIENCE,
+    SELECTED_PROJECTS,
+    TECHNICAL_SKILLS,
+    TEACHING_EXPERIENCE,
+} from '../data/profile';
+
+import '../styles/cv.css';
+
+const base = import.meta.env.BASE_URL;
+
+const graduateDegrees = EDUCATION.filter((entry) => entry.title.includes('Ph.D.') || entry.title.includes('M.S.'));
+const selectedPublications = publicationsData.filter((pub) => pub.publicationType !== 'Poster').slice(0, 5);
+const currentWork = [RESEARCH_EXPERIENCE[0], TEACHING_EXPERIENCE[0], SELECTED_PROJECTS[0]];
+---
+
+<Layout pageTitle="CV">
+    <span class="eyebrow">Curriculum Vitae</span>
+    <h1>Highlights</h1>
+    <p class="page-intro">
+        This page is a shortened public version of the CV. The PDF contains the full record of research, teaching,
+        publications, service, and awards.
+    </p>
+
+    <div class="action-row">
+        <a href={`${base}files/cv.pdf`} class="btn" target="_blank" rel="noopener noreferrer">Open PDF CV</a>
+        <a href={`${base}files/cv.pdf`} class="btn-outline" download>Download PDF CV</a>
+    </div>
+
+    <section class="cv-section">
+        <h2>Graduate Degrees</h2>
+        <ul class="simple-list">
+            {graduateDegrees.map((entry) => (
+                <li>
+                    <div class="cv-item-title">{entry.title}</div>
+                    <div class="meta-line">{entry.institution}</div>
+                    <div class="meta-line">{entry.dates}</div>
+                    <div class="meta-line">{entry.note}</div>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <section class="cv-section">
+        <h2>Current Work</h2>
+        <ul class="simple-list">
+            {currentWork.map((entry) => (
+                <li>
+                    <div class="cv-item-title">{entry.title}</div>
+                    <div class="meta-line">{entry.institution}</div>
+                    <div class="meta-line">{entry.dates}</div>
+                    {'detail' in entry && entry.detail && <div class="meta-line">{entry.detail}</div>}
+                    {'note' in entry && entry.note && <div class="meta-line">{entry.note}</div>}
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <div class="grid-2 cv-grid">
+        <section class="card cv-panel">
+            <h2>Select Publications</h2>
+            <ol class="cv-publication-list">
+                {selectedPublications.map((pub) => (
+                    <li>
+                        {pub.link ? (
+                            <a href={pub.link} class="cv-item-title" target="_blank" rel="noopener noreferrer">{pub.title}</a>
+                        ) : (
+                            <span class="cv-item-title">{pub.title}</span>
+                        )}
+                        <div class="meta-line">{pub.authors}</div>
+                        <div class="meta-line">{pub.journal} · {pub.year} · {pub.publicationType}</div>
+                    </li>
+                ))}
+            </ol>
+        </section>
+
+        <section class="card cv-panel">
+            <h2>Research Interests</h2>
+            <ul class="tag-list">
+                {RESEARCH_AREAS.map((area) => (
+                    <li>{area}</li>
+                ))}
+            </ul>
+
+            <h3>Technical Areas</h3>
+            <ul class="simple-list compact-list">
+                {TECHNICAL_SKILLS.map((skill) => (
+                    <li>
+                        <strong>{skill.label}.</strong> {skill.content}
+                    </li>
+                ))}
+            </ul>
+
+            <h3>Awards</h3>
+            <ul class="simple-list compact-list">
+                {AWARDS.map((award) => (
+                    <li>{award}</li>
+                ))}
+            </ul>
+        </section>
+    </div>
+</Layout>

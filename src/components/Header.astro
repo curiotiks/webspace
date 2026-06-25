@@ -1,17 +1,218 @@
 ---
-import Menu from '../components/Menu.astro';
-import Navigation from '../components/Navigation.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
+import HeaderLink from './HeaderLink.astro';
+import { NAV_LINKS, SITE_TITLE } from '../consts';
+import { url } from '../utils/paths';
 ---
 
 <header>
-  <nav>
-    <div class="nav-left">
-      <Menu />
-      <Navigation />
-    </div>
-    <div class="nav-right">
-      <ThemeToggle />
-    </div>
-  </nav>
+	<nav>
+		<h2><a href={url('/')}>{SITE_TITLE}</a></h2>
+
+		<div class="internal-links">
+			{NAV_LINKS.map((link) => (
+				<HeaderLink href={url(link.href)}>{link.label}</HeaderLink>
+			))}
+		</div>
+
+		<div class="header-actions">
+			<button id="theme-toggle" aria-label="Toggle Dark Mode">
+				<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+				<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+			</button>
+
+			<button id="menu-toggle" aria-label="Toggle Menu">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+			</button>
+		</div>
+	</nav>
+
+	<div id="mobile-menu" class="mobile-menu hidden">
+		<div class="mobile-menu-header">
+			<span class="mobile-menu-title">Menu</span>
+		</div>
+		{NAV_LINKS.map((link) => (
+			<a href={url(link.href)}>{link.label}</a>
+		))}
+	</div>
 </header>
+
+<script>
+	document.getElementById('theme-toggle')?.addEventListener('click', () => {
+		const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+		const newTheme = isDark ? 'light' : 'dark';
+		(window as any).__setPreferredTheme?.(newTheme);
+		localStorage.setItem('theme', newTheme);
+	});
+
+	document.getElementById('menu-toggle')?.addEventListener('click', () => {
+		document.getElementById('mobile-menu')?.classList.toggle('hidden');
+	});
+</script>
+
+<style>
+	header {
+		margin: 0;
+		padding: 0 1em;
+		background-color: var(--color-bg-header);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		transition: background-color 0.3s ease;
+	}
+
+	header::after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(90deg, transparent 0%, var(--color-border) 20%, var(--color-border) 80%, transparent 100%);
+		opacity: 0.6;
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: var(--max-width);
+		margin: 0 auto;
+		height: 4.5rem;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 1.3em;
+		font-family: var(--font-sans);
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+
+	h2 a {
+		text-decoration: none;
+		color: var(--color-text-main);
+		border: none;
+	}
+
+	.internal-links {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	.internal-links :global(a) {
+		padding: 0.5em 0.75em;
+		color: var(--color-text-main);
+		border-bottom: 2px solid transparent;
+		text-decoration: none;
+		font-size: 0.95rem;
+		font-weight: 500;
+		transition: all 0.2s ease;
+	}
+
+	.internal-links :global(a:hover) {
+		color: var(--color-accent);
+	}
+
+	.internal-links :global(a.active) {
+		text-decoration: none;
+		border-bottom-color: var(--color-accent);
+		color: var(--color-accent);
+	}
+
+	.header-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	#theme-toggle {
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--color-text-main);
+		transition: background-color 0.2s ease;
+	}
+
+	#theme-toggle:hover {
+		background-color: var(--color-bg-offset);
+		color: var(--color-accent);
+	}
+
+	#menu-toggle {
+		display: none;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		color: var(--color-text-main);
+	}
+
+	.mobile-menu {
+		display: none;
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0.75rem 0 1rem;
+	}
+
+	.mobile-menu a {
+		display: block;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid var(--color-border);
+		color: var(--color-text-main);
+		text-decoration: none;
+	}
+
+	.mobile-menu-header {
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid var(--color-border);
+		margin-bottom: 0.25rem;
+	}
+
+	.mobile-menu-title {
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: var(--color-text-main);
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	.sun-icon {
+		display: inline-block;
+	}
+
+	.moon-icon {
+		display: none;
+	}
+
+	:global([data-theme='dark']) .sun-icon {
+		display: none;
+	}
+
+	:global([data-theme='dark']) .moon-icon {
+		display: inline-block;
+	}
+
+	@media (max-width: 920px) {
+		.internal-links {
+			display: none;
+		}
+
+		#menu-toggle {
+			display: flex;
+		}
+
+		.mobile-menu:not(.hidden) {
+			display: block;
+		}
+	}
+</style>

@@ -2,13 +2,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Layout from '../layouts/Layout.astro';
+import { DISSERTATION_SLIDES_URL } from '../constants';
+import { DISSERTATION } from '../data/profile';
 
 import '../styles/dissertation.css';
 
 const base = import.meta.env.BASE_URL;
-
-const dissertationTitle = 'Game-Based Assessment and Self-Efficacy Modeling in Interactive Learning Environments';
-const dissertationSummary = 'A dissertation-focused page for the full written document and the recorded defense or presentation.';
 
 const publicRoot = path.join(process.cwd(), 'public');
 const documentDir = path.join(publicRoot, 'files', 'dissertation');
@@ -40,109 +39,63 @@ const videoMimeType = recordingVideo ? videoMimeTypes[path.extname(recordingVide
 ---
 
 <Layout pageTitle="Dissertation">
-    <div class="page-container">
-        <h1>Dissertation</h1>
+    <span class="eyebrow">Dissertation</span>
+    <h1>{DISSERTATION.title}</h1>
+    <p class="page-intro">{DISSERTATION.summary}</p>
 
-        <p class="intro-text">
-            {dissertationSummary}
-        </p>
+    <section>
+        <h2>Video Recording</h2>
 
+        {videoUrl && videoMimeType ? (
+            <video controls preload="metadata" class="dissertation-video">
+                <source src={videoUrl} type={videoMimeType} />
+                Your browser does not support the embedded video player.
+            </video>
+        ) : (
+            <div class="card note-card">
+                <p>The recording is not uploaded yet.</p>
+                <p>
+                    Add an <code>.mp4</code>, <code>.webm</code>, <code>.mov</code>, or <code>.m4v</code> file to
+                    <code> public/media/dissertation/</code> and it will appear here automatically.
+                </p>
+            </div>
+        )}
+    </section>
+
+    <section>
+        <h2>Materials</h2>
+
+        {pdfUrl ? (
+            <div class="action-row">
+                <a href={pdfUrl} class="btn" target="_blank" rel="noopener noreferrer">Open dissertation PDF</a>
+                <a href={pdfUrl} class="btn-outline" download>Download dissertation PDF</a>
+                <a href={DISSERTATION_SLIDES_URL} class="btn-outline" target="_blank" rel="noopener noreferrer">View defense slides</a>
+            </div>
+        ) : (
+            <div class="card note-card">
+                <p>No dissertation PDF is in place yet.</p>
+                <p>
+                    Add the file to <code>public/files/dissertation/</code>. The page will automatically use the first
+                    PDF it finds there.
+                </p>
+            </div>
+        )}
+    </section>
+
+    {pdfUrl && (
         <section>
-            <h2>Project</h2>
+            <h2>Read Online</h2>
+            <iframe src={pdfUrl} title="Dissertation PDF" class="dissertation-document"></iframe>
+        </section>
+    )}
+
+    <section>
+        <h2>Supplemental Materials</h2>
+        <div class="card note-card">
             <p>
-                <strong>{dissertationTitle}</strong>
+                This section is reserved for additional artifacts, appendices, handouts, datasets, and related
+                materials as they are prepared for release.
             </p>
-            <p>
-                This page is set up to display the full dissertation and host the defense or presentation recording
-                once those files are added to the repository.
-            </p>
-            <ul class="custom-list">
-                <li>
-                    <span class="list-item-title">Document folder.</span>{' '}
-                    <span class="list-item-description"><code>public/files/dissertation/</code></span>
-                </li>
-                <li>
-                    <span class="list-item-title">Video folder.</span>{' '}
-                    <span class="list-item-description"><code>public/media/dissertation/</code></span>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Full Document</h2>
-
-            {pdfUrl ? (
-                <>
-                    <div class="dissertation-actions">
-                        <a
-                            href={pdfUrl}
-                            class="dissertation-action-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Open PDF
-                        </a>
-                        <a
-                            href={pdfUrl}
-                            class="dissertation-action-link"
-                            download
-                        >
-                            Download PDF
-                        </a>
-                    </div>
-
-                    <iframe
-                        src={pdfUrl}
-                        title="Dissertation PDF"
-                        class="dissertation-document"
-                    ></iframe>
-                </>
-            ) : (
-                <div class="info-card dissertation-placeholder">
-                    <p>
-                        No dissertation PDF is in place yet.
-                    </p>
-                    <p class="placeholder-note">
-                        Add the file to <code>public/files/dissertation/</code>. The page will automatically embed the
-                        first PDF it finds there.
-                    </p>
-                </div>
-            )}
-        </section>
-
-        <section>
-            <h2>Video Recording</h2>
-
-            {videoUrl && videoMimeType ? (
-                <>
-                    <div class="dissertation-actions">
-                        <a
-                            href={videoUrl}
-                            class="dissertation-action-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Open Recording
-                        </a>
-                    </div>
-
-                    <video controls preload="metadata" class="dissertation-video">
-                        <source src={videoUrl} type={videoMimeType} />
-                        Your browser does not support the embedded video player.
-                    </video>
-                </>
-            ) : (
-                <div class="info-card dissertation-placeholder">
-                    <p>
-                        No dissertation recording is in place yet.
-                    </p>
-                    <p class="placeholder-note">
-                        Add an <code>.mp4</code>, <code>.webm</code>, <code>.mov</code>, or <code>.m4v</code> file to
-                        <code> public/media/dissertation/</code>. The page will automatically use the first supported
-                        video it finds.
-                    </p>
-                </div>
-            )}
-        </section>
-    </div>
+        </div>
+    </section>
 </Layout>

@@ -1,0 +1,9 @@
+.contact-panel {
+	margin-top: 2rem;
+	padding: 1.5rem;
+}
+
+.contact-submit[disabled] {
+	opacity: 0.65;
+	cursor: not-allowed;
+}

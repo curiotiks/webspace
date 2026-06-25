@@ -1,69 +1,20 @@
-.dissertation-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-}
-
-.dissertation-action-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    background-color: var(--color-bg-alt);
-    color: var(--color-primary);
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color var(--transition-fast), color var(--transition-fast);
-}
-
-@media (hover: hover) {
-    .dissertation-action-link:hover {
-        background-color: var(--color-bg);
-        color: var(--color-accent);
-    }
-}
-
-.dissertation-action-link:active {
-    background-color: var(--color-bg);
-    color: var(--color-accent);
+.dissertation-video {
+	width: 100%;
+	border-radius: 16px;
+	background: #000;
+	box-shadow: var(--shadow-md);
 }
 
 .dissertation-document {
-    width: 100%;
-    min-height: 72vh;
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    background-color: var(--color-bg-alt);
+	width: 100%;
+	min-height: 72vh;
+	border: 1px solid var(--color-border);
+	border-radius: 16px;
+	background: var(--color-bg-offset);
 }
 
-.dissertation-video {
-    width: 100%;
-    border-radius: 12px;
-    background-color: #000;
-}
-
-.dissertation-placeholder {
-    text-align: left;
-}
-
-.placeholder-note {
-    margin-bottom: 0;
-}
-
-.placeholder-note code,
-.list-item-description code {
-    font-size: 0.95em;
-    background-color: var(--color-bg);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    padding: 0.15rem 0.35rem;
-}
-
-@media (max-width: 636px) {
-    .dissertation-document {
-        min-height: 60vh;
-    }
+@media (max-width: 720px) {
+	.dissertation-document {
+		min-height: 60vh;
+	}
 }

@@ -1,13 +1,105 @@
 ---
-import { SITE_DATA } from '../constants';
-import SocialIcons from './SocialIcons.astro';
+import { FOOTER_CONTACT, NAV_LINKS, SITE_DESCRIPTION, SITE_TITLE, SOCIAL_LINKS } from '../consts';
+import { url } from '../utils/paths';
 
 const year = new Date().getFullYear();
 ---
 
-<div class="footer-container">
+<footer class="site-footer">
 	<div class="footer-content">
-		<div class="copyright">&copy; {year} {SITE_DATA.name}</div>
-		<SocialIcons size={18} gap="1.0rem" class="footer-socials" />
+		<div class="footer-col brand-col">
+			<h3>{SITE_TITLE}</h3>
+			<p>{SITE_DESCRIPTION}</p>
+			<div class="copyright">&copy; {year} {SITE_TITLE}</div>
+		</div>
+
+		<div class="footer-col">
+			<h4>Navigate</h4>
+			<ul>
+				{NAV_LINKS.map((link) => (
+					<li><a href={url(link.href)}>{link.label}</a></li>
+				))}
+			</ul>
+		</div>
+
+		<div class="footer-col">
+			<h4>Contact</h4>
+			<p>{FOOTER_CONTACT.label}</p>
+			<p><a href={url(FOOTER_CONTACT.href)}>Open contact form</a></p>
+		</div>
+
+		<div class="footer-col">
+			<h4>Profiles</h4>
+			<ul>
+				{SOCIAL_LINKS.map((link) => (
+					<li><a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a></li>
+				))}
+			</ul>
+		</div>
 	</div>
-</div>
+</footer>
+
+<style>
+	.site-footer {
+		background-color: var(--color-bg-offset);
+		color: var(--color-text-main);
+		border-top: 1px solid var(--color-border);
+		margin-top: 4rem;
+	}
+
+	.footer-content {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 2.5rem 1rem;
+		display: grid;
+		grid-template-columns: 1.6fr 1fr 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.footer-col h3,
+	.footer-col h4 {
+		margin-top: 0;
+		margin-bottom: 0.9rem;
+	}
+
+	.footer-col h3 {
+		font-size: 1.2rem;
+	}
+
+	.footer-col h4 {
+		font-size: 1rem;
+		font-family: var(--font-sans);
+		color: var(--color-text-main);
+	}
+
+	.footer-col p,
+	.footer-col li {
+		font-size: 0.95rem;
+		color: var(--color-text-muted);
+	}
+
+	.footer-col ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.footer-col li + li {
+		margin-top: 0.5rem;
+	}
+
+	.brand-col p {
+		max-width: 28rem;
+	}
+
+	.copyright {
+		color: var(--color-text-muted);
+		font-size: 0.9rem;
+	}
+
+	@media (max-width: 860px) {
+		.footer-content {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

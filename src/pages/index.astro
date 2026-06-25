@@ -1,37 +1,89 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import { SITE_DATA } from '../constants';
-import { PROFILE } from '../data/profile';
+import portraitImage from '../assets/portrait/IMG_0909.JPG';
+import { SITE_TITLE, SITE_TAGLINE, SCHOLAR_URL } from '../consts';
+import { PROJECTS } from '../data/projects';
+import { PROFILE, RESEARCH_AREAS } from '../data/profile';
+import publicationsData from '../data/publications.json';
 
 import '../styles/home.css';
 
 const base = import.meta.env.BASE_URL;
+const selectedPublications = publicationsData.filter((pub) => pub.publicationType !== 'Poster').slice(0, 3);
+const featuredProjects = PROJECTS.slice(0, 3);
 ---
 
-<Layout pageTitle="">
-	<Hero 
-		name={SITE_DATA.name} 
-		tagline={SITE_DATA.tagline} 
-		twitter={SITE_DATA.twitter}
-		linkedin={SITE_DATA.linkedin}
-		github={SITE_DATA.github}
-		scholar={SITE_DATA.scholar}
-		orcid={SITE_DATA.orcid}
-		email={SITE_DATA.email}
-	/>
+<Layout pageTitle="" description={PROFILE.description}>
+	<section class="home-hero">
+		<div class="home-copy">
+			<span class="eyebrow">{SITE_TAGLINE}</span>
+			<h1>{SITE_TITLE}</h1>
+			<p class="page-intro">{PROFILE.intro}</p>
+			<p>{PROFILE.homeSummary}</p>
+			<p>{PROFILE.homeSecondary}</p>
 
-	<section class="home-overview">
-		<p>{PROFILE.intro}</p>
-		<p>{PROFILE.homeSummary}</p>
-		<p>{PROFILE.homeSecondary}</p>
+			<div class="action-row">
+				<a href={`${base}about/`} class="btn">About</a>
+				<a href={`${base}cv/`} class="btn-outline">CV</a>
+				<a href={`${base}projects/`} class="btn-outline">Projects</a>
+			</div>
 
-		<ul class="home-links">
-			<li><a href={`${base}about/`}>About</a></li>
-			<li><a href={`${base}dissertation/`}>Dissertation</a></li>
-			<li><a href={`${base}publications/`}>Publications</a></li>
-			<li><a href={`${base}presentations/`}>Presentations</a></li>
-			<li><a href={`${base}contact/`}>Contact</a></li>
-		</ul>
+			<ul class="tag-list">
+				{RESEARCH_AREAS.map((area) => (
+					<li>{area}</li>
+				))}
+			</ul>
+
+			<div class="home-links-row">
+				<a href="https://orcid.org/0000-0002-1362-1805" target="_blank" rel="noopener noreferrer">ORCID</a>
+				<a href={SCHOLAR_URL} target="_blank" rel="noopener noreferrer">Google Scholar</a>
+				<a href="https://github.com/curiotiks" target="_blank" rel="noopener noreferrer">GitHub</a>
+				<a href="https://bsky.app/profile/curiotiks.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a>
+			</div>
+		</div>
+
+		<div class="home-portrait-wrap">
+			<Image src={portraitImage} alt="Portrait of G. Curt Fulwider" class="home-portrait" fetchpriority="high" />
+		</div>
 	</section>
+
+	<div class="grid-2 home-grid">
+		<section class="card home-panel">
+			<h2>Selected Publications</h2>
+			<ul class="publication-list">
+				{selectedPublications.map((pub) => (
+					<li>
+						{pub.link ? (
+							<a href={pub.link} class="home-item-title" target="_blank" rel="noopener noreferrer">{pub.title}</a>
+						) : (
+							<span class="home-item-title">{pub.title}</span>
+						)}
+						<div class="meta-line">{pub.authors}</div>
+						<div class="meta-line">{pub.journal} · {pub.year}</div>
+					</li>
+				))}
+			</ul>
+			<a href={`${base}publications/`} class="text-button">View full publication list</a>
+		</section>
+
+		<section class="card home-panel">
+			<h2>Current Focus</h2>
+			<ul class="simple-list">
+				{featuredProjects.map((project) => (
+					<li>
+						<div class="home-project-row">
+							<span class="home-item-title">{project.title}</span>
+							<span class="status-badge">{project.status}</span>
+						</div>
+						<div class="meta-line">{project.description}</div>
+					</li>
+				))}
+			</ul>
+			<div class="action-row home-actions-compact">
+				<a href={`${base}dissertation/`} class="btn-outline">Dissertation</a>
+				<a href={`${base}contact/`} class="btn-outline">Contact</a>
+			</div>
+		</section>
+	</div>
 </Layout>
