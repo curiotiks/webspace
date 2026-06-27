@@ -19,15 +19,6 @@ export const PROJECTS = [
     heroImage: '/images/projects/mean-alchemy.jpg',
   },
   {
-    id: 'dashboards',
-    title: 'Learning Analytics Dashboards',
-    description:
-      'Public-facing dashboards and internal assessment workflows for campus health and institutional reporting.',
-    year: 2025,
-    status: 'Active',
-    heroImage: '/images/projects/dashboards.jpg',
-  },
-  {
     id: 'teaching-consulting',
     title: 'Teaching, Assessment, and Consulting Work',
     description:

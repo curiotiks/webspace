@@ -149,16 +149,6 @@ export const SELECTED_PROJECTS = [
     ],
   },
   {
-    dates: "2025-present",
-    title: "Learning Analytics Dashboards and Tools",
-    institution: "Center for Health Advocacy & Wellness, Florida State University",
-    note: "Public reporting dashboard of campus health trends plus improvements to internal assessment and survey instruments.",
-    bullets: [
-      "Built and maintained dashboard and reporting workflows for public-facing campus health trend reporting.",
-      "Improved internal assessment instruments and survey workflows for healthier and more reliable data collection.",
-    ],
-  },
-  {
     dates: "2020-2022",
     title: "Physics Playground Analytics",
     institution: "Learning analytics and gameplay telemetry",

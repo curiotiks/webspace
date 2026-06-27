@@ -11,7 +11,7 @@ import '../styles/home.css';
 
 const base = import.meta.env.BASE_URL;
 const selectedPublications = publicationsData.filter((pub) => pub.publicationType !== 'Poster').slice(0, 3);
-const featuredProjects = PROJECTS.slice(0, 3);
+const featuredProjects = PROJECTS.filter((project) => project.id !== 'teaching-consulting').slice(0, 3);
 ---
 
 <Layout pageTitle="" description={PROFILE.description}>
@@ -44,7 +44,16 @@ const featuredProjects = PROJECTS.slice(0, 3);
 		</div>
 
 		<div class="home-portrait-wrap">
-			<Image src={portraitImage} alt="Portrait of G. Curt Fulwider" class="home-portrait" fetchpriority="high" />
+			<div class="home-portrait-frame">
+				<Image
+					src={portraitImage}
+					alt="Portrait of G. Curt Fulwider"
+					class="home-portrait"
+					fetchpriority="high"
+					width={320}
+					height={320}
+				/>
+			</div>
 		</div>
 	</section>
 
