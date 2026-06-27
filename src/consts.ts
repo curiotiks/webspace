@@ -1,4 +1,4 @@
-import { CONTACT_FORM_ENDPOINT, DISSERTATION_SLIDES_URL, GOOGLE_SCHOLAR_URL, SITE_DATA } from './constants';
+import { DISSERTATION_SLIDES_URL, GOOGLE_SCHOLAR_URL, SITE_DATA } from './constants';
 
 export const SITE_TITLE = SITE_DATA.name;
 export const SITE_TAGLINE = SITE_DATA.tagline;
@@ -6,7 +6,6 @@ export const SITE_DESCRIPTION = SITE_DATA.description;
 export const SITE_URL = SITE_DATA.siteUrl;
 
 export const CV_FILE_URL = '/files/cv.pdf';
-export const CONTACT_FORM_URL = CONTACT_FORM_ENDPOINT;
 export const DISSERTATION_SLIDES_LINK = DISSERTATION_SLIDES_URL;
 export const SCHOLAR_URL = GOOGLE_SCHOLAR_URL;
 
@@ -29,8 +28,9 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const FOOTER_CONTACT = {
-  label: 'Use the contact form for research, teaching, collaboration, and consulting enquiries.',
+  label: 'For research, teaching, collaboration, or consulting conversations, use one of the public contact options.',
   href: '/contact',
+  linkLabel: 'View contact options',
 };
 
 export const UMAMI_SRC = import.meta.env.PUBLIC_UMAMI_SRC ?? 'https://cloud.umami.is/script.js';

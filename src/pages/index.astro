@@ -11,7 +11,7 @@ import '../styles/home.css';
 
 const base = import.meta.env.BASE_URL;
 const selectedPublications = publicationsData.filter((pub) => pub.publicationType !== 'Poster').slice(0, 3);
-const featuredProjects = PROJECTS.filter((project) => project.id !== 'teaching-consulting').slice(0, 3);
+const featuredProjects = PROJECTS.slice(0, 3);
 ---
 
 <Layout pageTitle="" description={PROFILE.description}>
@@ -82,7 +82,7 @@ const featuredProjects = PROJECTS.filter((project) => project.id !== 'teaching-c
 				{featuredProjects.map((project) => (
 					<li>
 						<div class="home-project-row">
-							<span class="home-item-title">{project.title}</span>
+							<a href={`${base}projects/${project.id}/`} class="home-item-title">{project.title}</a>
 							<span class="status-badge">{project.status}</span>
 						</div>
 						<div class="meta-line">{project.description}</div>

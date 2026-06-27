@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { PROJECTS } from '../../data/projects';
+import { url } from '../../utils/paths';
+
+import '../../styles/project-detail.css';
+
+export function getStaticPaths() {
+  return PROJECTS.map((project) => ({
+    params: { id: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout pageTitle={project.title}>
+    <a href={url('/projects')} class="text-button project-back">Back to projects</a>
+
+    <section class="project-detail-hero">
+        <div class="project-detail-copy">
+            <span class="eyebrow">Project</span>
+            <h1>{project.title}</h1>
+            <p class="page-intro">{project.description}</p>
+
+            <div class="project-meta-row">
+                <span class="meta-pill">{project.year}</span>
+                <span class="status-badge">{project.status}</span>
+            </div>
+        </div>
+
+        <div class={`project-detail-visual project-image--${project.id}`}>
+            <span class="project-wordmark">{project.visualLabel}</span>
+        </div>
+    </section>
+
+    {project.links && project.links.length > 0 && (
+        <section class="project-links">
+            <h2>Links</h2>
+            <div class="action-row">
+                {project.links.map((link) => (
+                    <a href={link.href} class="btn-outline" target="_blank" rel="noopener noreferrer">{link.label}</a>
+                ))}
+            </div>
+        </section>
+    )}
+
+    {project.note && (
+        <div class="card note-card">
+            <p>{project.note}</p>
+        </div>
+    )}
+
+    <div class="project-sections">
+        {project.sections.map((section) => (
+            <section class="project-section">
+                <h2>{section.title}</h2>
+                {section.paragraphs.map((paragraph) => (
+                    <p>{paragraph}</p>
+                ))}
+                {section.bullets && (
+                    <ul class="simple-list">
+                        {section.bullets.map((bullet) => (
+                            <li>{bullet}</li>
+                        ))}
+                    </ul>
+                )}
+            </section>
+        ))}
+    </div>
+</Layout>

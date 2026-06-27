@@ -1,67 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { CONTACT_FORM_ENDPOINT } from '../constants';
+import { SITE_DATA } from '../constants';
 
 import '../styles/contact.css';
 
-const formConfigured = CONTACT_FORM_ENDPOINT.length > 0;
+const contactProfiles = [
+    {
+        label: 'GitHub',
+        href: `https://github.com/${SITE_DATA.github}`,
+        note: 'Best for code, projects, and public-facing collaboration.',
+    },
+    {
+        label: 'LinkedIn',
+        href: SITE_DATA.linkedin,
+        note: 'Best for professional outreach, teaching, and consulting conversations.',
+    },
+    {
+        label: 'Bluesky',
+        href: `https://bsky.app/profile/${SITE_DATA.bluesky}`,
+        note: 'A lighter-weight public channel for staying in touch.',
+    },
+].filter((profile) => profile.href);
 ---
 
 <Layout pageTitle="Contact">
     <span class="eyebrow">Contact</span>
     <h1>Get in Touch</h1>
     <p class="page-intro">
-        Use the form below for research, teaching, collaboration, or consulting enquiries. The site does not display a
-        raw email address directly.
+        I keep my direct email address off the site. For research, collaboration, teaching, or consulting questions,
+        reach out through one of the public profiles below.
     </p>
 
-    {!formConfigured && (
-        <div class="card note-card">
-            <p>This form is wired for a static endpoint but is not active yet.</p>
-            <p>Set <code>PUBLIC_CONTACT_FORM_ENDPOINT</code> in Render to your Formspree endpoint to turn delivery on.</p>
-        </div>
-    )}
-
-    <section class="card contact-panel">
-        <form
-            class="form-grid"
-            method="POST"
-            action={formConfigured ? CONTACT_FORM_ENDPOINT : '#'}
-            data-configured={formConfigured ? 'true' : 'false'}
-        >
-            {formConfigured && <input type="hidden" name="_subject" value="Website contact form submission" />}
-
-            <label>
-                Name
-                <input type="text" name="name" autocomplete="name" required />
-            </label>
-
-            <label>
-                Email
-                <input type="email" name="email" autocomplete="email" required />
-            </label>
-
-            <label>
-                Subject
-                <input type="text" name="subject" autocomplete="off" required />
-            </label>
-
-            <label>
-                Message
-                <textarea name="message" rows="8" required></textarea>
-            </label>
-
-            <button type="submit" class="btn contact-submit" disabled={!formConfigured}>Send message</button>
-        </form>
-    </section>
+    <div class="contact-links">
+        {contactProfiles.map((profile) => (
+            <a href={profile.href} class="contact-link" target="_blank" rel="noopener noreferrer">
+                <span class="contact-link-label">{profile.label}</span>
+                <span class="contact-link-note">{profile.note}</span>
+            </a>
+        ))}
+    </div>
 </Layout>
-
-<script>
-    const contactForm = document.querySelector('form[data-configured]');
-
-    if (contactForm?.getAttribute('data-configured') !== 'true') {
-        contactForm?.addEventListener('submit', (event) => {
-            event.preventDefault();
-        });
-    }
-</script>

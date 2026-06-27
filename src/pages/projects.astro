@@ -4,8 +4,6 @@ import { PROJECTS } from '../data/projects';
 import { url } from '../utils/paths';
 
 import '../styles/projects.css';
-
-const isExternal = (href?: string) => !!href && /^(https?:)?\/\//.test(href);
 ---
 
 <Layout pageTitle="Projects">
@@ -13,35 +11,26 @@ const isExternal = (href?: string) => !!href && /^(https?:)?\/\//.test(href);
         <span class="eyebrow">Projects</span>
         <h1>Research and Applied Work</h1>
         <p class="page-intro">
-            Ongoing and recent projects across game-based assessment, learning analytics, and related applied work.
+            Current work across game-based assessment, measurement, research workflows, and data literacy design.
         </p>
     </div>
 
     <div class="projects-grid">
         {PROJECTS.map((project) => (
             <article class="project-card">
-                <div class="project-image">
-                    <img src={project.heroImage} alt={project.title} />
+                <div class={`project-image project-image--${project.id}`}>
+                    <span class="project-wordmark">{project.visualLabel}</span>
                     <span class="status-badge project-badge">{project.status}</span>
                 </div>
 
                 <div class="project-content">
                     <div class="meta-line">{project.year}</div>
-                    <h2 class="project-title">{project.title}</h2>
+                    <h2 class="project-title">
+                        <a href={url(`/projects/${project.id}`)}>{project.title}</a>
+                    </h2>
                     <p>{project.description}</p>
 
-                    {project.link ? (
-                        <a
-                            href={isExternal(project.link) ? project.link : url(project.link!)}
-                            class="text-button"
-                            target={isExternal(project.link) ? '_blank' : undefined}
-                            rel={isExternal(project.link) ? 'noopener noreferrer' : undefined}
-                        >
-                            View project
-                        </a>
-                    ) : (
-                        <span class="meta-line">Detailed page coming next.</span>
-                    )}
+                    <a href={url(`/projects/${project.id}`)} class="text-button">View project</a>
                 </div>
             </article>
         ))}

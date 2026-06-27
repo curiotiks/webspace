@@ -15,4 +15,3 @@ export const SITE_DATA = {
 
 export const GOOGLE_SCHOLAR_URL = 'https://scholar.google.com/scholar?q=%22G.+Curt+Fulwider%22';
 export const DISSERTATION_SLIDES_URL = 'https://curiotiks.github.io/defense-slides-site/#/title-slide';
-export const CONTACT_FORM_ENDPOINT = import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT ?? '';
