@@ -7,10 +7,13 @@
 
 .about-portrait {
 	width: 100%;
+	max-width: 320px;
+	height: auto;
 	border-radius: 20px;
 	object-fit: cover;
 	object-position: 68% 35%;
 	box-shadow: var(--shadow-md);
+	justify-self: end;
 }
 
 .about-gallery {
@@ -36,6 +39,10 @@
 @media (max-width: 860px) {
 	.about-hero {
 		grid-template-columns: 1fr;
+	}
+
+	.about-portrait {
+		justify-self: start;
 	}
 
 	.about-gallery {

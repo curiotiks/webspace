@@ -66,6 +66,12 @@ iframe {
 	max-width: 100%;
 }
 
+img,
+video {
+	display: block;
+	height: auto;
+}
+
 h1,
 h2,
 h3,

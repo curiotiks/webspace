@@ -13,11 +13,13 @@
 .home-portrait-wrap {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
 .home-portrait {
-	width: min(100%, 320px);
-	aspect-ratio: 1 / 1;
+	width: clamp(220px, 30vw, 320px);
+	height: clamp(220px, 30vw, 320px);
+	flex: 0 0 auto;
 	object-fit: cover;
 	object-position: 68% 35%;
 	border-radius: 50%;
@@ -74,5 +76,6 @@
 
 	.home-portrait {
 		width: min(78vw, 280px);
+		height: min(78vw, 280px);
 	}
 }
